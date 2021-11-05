@@ -7,6 +7,7 @@ import RecipesProvider from './provider/RecipesProvider';
 import Comidas from './pages/Comidas';
 import Explorar from './pages/Explorar';
 import Perfil from './pages/Perfil';
+import Bebidas from './pages/Bebidas';
 
 function App() {
   return (
@@ -14,9 +15,12 @@ function App() {
       <RecipesProvider>
         <Switch>
           <Route exact path="/" component={ Login } />
-          <Route exact path="/comidas" component={ Comidas } />
-          <Route exact path="/explorar" component={ Explorar } />
           <Route exact path="/perfil" component={ Perfil } />
+          <Route exact path="/comidas" component={ Comidas } />
+          <Route exact path="/comidas/:id" />
+          <Route exact path="/explorar" component={ Explorar } />
+          <Route exact path="/explorar/:id" />
+          <Route exact path="/bebidas" component={ Bebidas } />
         </Switch>
       </RecipesProvider>
     </BrowserRouter>
