@@ -53,7 +53,7 @@ describe('2º Verifica se é possivel logar ao clicar no botão "entrar" ', () =
     expect(buttonSubmit.disabled).toBe(false);
   });
   it('verifica se ao clicar no botão "entrar" renderiza a pagina comidas', () => {
-    const { history } = renderWithRouter(<App />);
+    renderWithRouter(<App />);
 
     const buttonSubmit = screen.getByTestId(ID_BUTTON_SUBMIT);
     const inputEmail = screen.getByTestId(ID_INPUT_EMAIL);
@@ -64,7 +64,7 @@ describe('2º Verifica se é possivel logar ao clicar no botão "entrar" ', () =
     userEvent.click(inputPassword);
     userEvent.type(inputPassword, SENHA_TRUSTLY);
     userEvent.click(buttonSubmit);
-    console.log(history.location);
-    // expect(pathLocation).toBe('/comidas');
+    const textBebidas = screen.getByText(/comidas/i);
+    expect(textBebidas).toBeInTheDocument();
   });
 });
