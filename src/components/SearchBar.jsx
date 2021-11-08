@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import RecipesContext from '../context/RecipesContext';
 import recipesAPI from '../services/recipesAPI';
 
 function SearchBar() {
@@ -8,6 +9,8 @@ function SearchBar() {
     search: '',
     type: '',
   });
+
+  const { changeRecipes } = useContext(RecipesContext);
 
   const handleChange = ({ target: { value, name } }) => {
     setSearchInfo((prev) => ({
@@ -18,9 +21,13 @@ function SearchBar() {
 
   const handleClickSearch = async () => {
     if (searchInfo.type === 'Primeira letra' && searchInfo.search.length > 1) {
-      global.alert('Sua busca deve conter somente 1 (um) caracter');
+      return global.alert('Sua busca deve conter somente 1 (um) caracter');
     }
     const result = await recipesAPI(searchInfo, history.location.pathname);
+    const key = history.location.pathname.includes('/bebidas') ? 'drinks' : 'meals';
+    return result[key] === null
+      ? global.alert('Sinto muito, não encontramos nenhuma receita para esses filtros.')
+      : changeRecipes(key, result[key]);
   };
 
   return (
