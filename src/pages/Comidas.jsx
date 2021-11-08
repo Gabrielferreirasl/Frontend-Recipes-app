@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import Footer from '../components/Footer';
 import Header from '../components/Header';
 import RecipesContext from '../context/RecipesContext';
 
@@ -15,21 +16,24 @@ function Comidas() {
   }, [meals, history]);
 
   return (
-    <main>
-      <Header type="Comidas" />
-      {meals.length !== 0 && meals.map((meal, index) => (
-        index <= NUMBER_ELEVEN && (
-          <div key={ meal.idMeal } data-testid={ `${index}-recipe-card` }>
-            <h4 data-testid={ `${index}-card-name` }>{meal.strMeal}</h4>
-            <img
-              data-testid={ `${index}-card-img` }
-              src={ meal.strMealThumb }
-              alt="strMealThumb"
-            />
-          </div>
-        )
-      ))}
-    </main>
+    <>
+      <main>
+        <Header type="Comidas" />
+        {meals.length !== 0 && meals.map((meal, index) => (
+          index <= NUMBER_ELEVEN && (
+            <div key={ meal.idMeal } data-testid={ `${index}-recipe-card` }>
+              <h4 data-testid={ `${index}-card-name` }>{meal.strMeal}</h4>
+              <img
+                data-testid={ `${index}-card-img` }
+                src={ meal.strMealThumb }
+                alt="strMealThumb"
+              />
+            </div>
+          )
+        ))}
+      </main>
+      <Footer />
+    </>
   );
 }
 
