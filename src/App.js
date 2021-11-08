@@ -9,6 +9,7 @@ import Explorar from './pages/Explorar';
 import Perfil from './pages/Perfil';
 import Bebidas from './pages/Bebidas';
 import Details from './components/Details';
+import ExplorarComidasOuBedidas from './pages/ExplorarComidasOuBedidas';
 
 function App() {
   return (
@@ -19,8 +20,8 @@ function App() {
           <Route exact path="/perfil" component={ Perfil } />
           <Route exact path="/comidas" component={ Comidas } />
           <Route exact path="/comidas/:id" component={ Details } />
-          <Route path="/explorar/comidas/" component={ Comidas } />
-          <Route path="/explorar/bebidas/" component={ Bebidas } />
+          <Route path="/explorar/comidas/" component={ ExplorarComidasOuBedidas } />
+          <Route path="/explorar/bebidas/" component={ ExplorarComidasOuBedidas } />
           <Route exact path="/explorar" component={ Explorar } />
           <Route exact path="/bebidas/:id" component={ Details } />
           <Route exact path="/bebidas" component={ Bebidas } />
