@@ -35,6 +35,15 @@ function RenderCategory() {
     });
   };
 
+  const onClickAll = () => {
+    setFilters({
+      category: {
+        status: false,
+        filter: '',
+      },
+    });
+  };
+
   useEffect(() => {
     const updateCategory = async () => {
       const result = await categoryRecipesApi(history.location.pathname);
@@ -50,6 +59,13 @@ function RenderCategory() {
 
   return (
     <section>
+      <button
+        data-testid="All-category-filter"
+        onClick={ onClickAll }
+        type="button"
+      >
+        All
+      </button>
       {
         categoryRecipes[keyToCategory].length > 0 && categoryRecipes[keyToCategory]
           .map(({ strCategory }, index) => (
