@@ -3,9 +3,11 @@ import PropTypes from 'prop-types';
 
 function CardsRecipes({ items, maxItems }) {
   const NUMBER_ELEVEN = maxItems - 1;
-  const keyIdToRender = Object.keys(items[0])[0];
+  const keyIdToRender = Object.keys(items[0]).filter((key) => key.includes('id'))[0]; // extrai a chave referente ao id para comida ou bebida
   const keyImgToRender = keyIdToRender === 'idMeal' ? 'strMealThumb' : 'strDrinkThumb';
-  const keyNameToRender = Object.keys(items[0])[1];
+  const keyNameToRender = keyIdToRender === 'idMeal' ? 'strMeal' : 'strDrink';
+
+  console.log(items);
 
   return (
     <main>
