@@ -3,12 +3,15 @@ import { useHistory } from 'react-router';
 import shareIcon from '../images/shareIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import { getRecipeById } from '../services/recipesAPI';
+import '../style/details.css';
 
 function Details() {
   const [recipe, setRecipe] = useState({});
   const [type, setType] = useState('');
   const [recomendation, setRecomendation] = useState([]);
   const history = useHistory();
+
+  const RECOMENDATION_CARDS = 5;
 
   useEffect(() => {
     const getRecipe = async () => {
@@ -65,15 +68,26 @@ function Details() {
       </div>
       <div>
         <h3>Recomendadas</h3>
-        {recomendation.map((rec, indice) => indice <= 5 && (
-          <div className="recomendation" data-testid={ `${indice}-recomendation-card` }>
-            <img src={ rec[`str${type === 'Drink' ? 'Meal' : 'Drink'}Thumb`] } alt="" />
-            <p>{type === 'Drink' ? rec.strCategory : rec.strAlcoholic}</p>
-            <h3 data-testid={ `${indice}-recomendation-title` }>{rec[`str${type === 'Drink' ? 'Meal' : 'Drink'}`]}</h3>
-          </div>
-        ))}
+        <div className="recomendation">
+          {recomendation.map((rec, indice) => indice <= RECOMENDATION_CARDS && (
+            <div data-testid={ `${indice}-recomendation-card` }>
+              <img
+                className="recipe-img"
+                src={ rec[`str${type === 'Drink' ? 'Meal' : 'Drink'}Thumb`] }
+                alt="recomendation images"
+              />
+              <p>{type === 'Drink' ? rec.strCategory : rec.strAlcoholic}</p>
+              <h3 data-testid={ `${indice}-recomendation-title` }>
+                {rec[`str${type === 'Drink' ? 'Meal' : 'Drink'}`]}
+              </h3>
+            </div>
+          ))}
+
+        </div>
       </div>
-      <button data-testid="start-recipe-btn" type="button">Iniciar Receita</button>
+      <button className="start-recipe-btn" data-testid="start-recipe-btn" type="button">
+        Iniciar Receita
+      </button>
     </div>
   );
 }
