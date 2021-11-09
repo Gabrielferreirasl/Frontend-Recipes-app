@@ -8,4 +8,12 @@ const recipesAPI = async ({ search, type }, history) => {
   return json;
 };
 
+export const recipesApiList = async (locationPathName) => {
+  const url = locationPathName.includes('bebidas') ? 'thecocktaildb' : 'themealdb';
+  const endpoint = `https://www.${url}.com/api/json/v1/1/search.php?s=`;
+  const response = await fetch(endpoint);
+  const data = await response.json();
+  return data;
+};
+
 export default recipesAPI;

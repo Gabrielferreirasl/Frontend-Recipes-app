@@ -16,7 +16,7 @@ function RecipesProvider({ children }) {
   };
 
   return (
-    <RecipesContext.Provider value={ { changeRecipes, recipes } }>
+    <RecipesContext.Provider value={ { changeRecipes, recipes, setArrayRecipes } }>
       { children }
     </RecipesContext.Provider>
   );

@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import Header from '../components/Header';
 import RecipesContext from '../context/RecipesContext';
 import CardsRecipes from '../components/CardsRecipes';
+import RenderRecipes from '../components/RenderRecipes';
 
 function Bebidas() {
   const { recipes: { drinks } } = useContext(RecipesContext);
@@ -18,6 +19,7 @@ function Bebidas() {
     <main>
       <Header type="Bebidas" />
       {drinks.length !== 0 && <CardsRecipes maxItems={ 11 } items={ drinks } />}
+      <RenderRecipes items={ drinks } />
     </main>
   );
 }

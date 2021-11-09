@@ -3,13 +3,12 @@ import PropTypes from 'prop-types';
 
 function CardsRecipes({ items, maxItems }) {
   const NUMBER_ELEVEN = maxItems - 1;
-  const KeysItems = Object.keys(items[0]);
-  const keyIdToRender = KeysItems[0];
+  const keyIdToRender = Object.keys(items[0])[0];
   const keyImgToRender = keyIdToRender === 'idMeal' ? 'strMealThumb' : 'strDrinkThumb';
   const keyNameToRender = Object.keys(items[0])[1];
 
   return (
-    <section>
+    <main>
       {
         items.map((item, index) => (
           index <= NUMBER_ELEVEN && (
@@ -24,7 +23,7 @@ function CardsRecipes({ items, maxItems }) {
           )
         ))
       }
-    </section>
+    </main>
   );
 }
 
