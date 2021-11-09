@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Footer from '../components/Footer';
 import profileIcon from '../images/profileIcon.svg';
 
 function Perfil({ history }) {
@@ -33,6 +34,7 @@ function Perfil({ history }) {
           Sair
         </button>
       </div>
+      <Footer />
     </main>
   );
 }
