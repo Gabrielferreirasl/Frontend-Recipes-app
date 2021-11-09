@@ -6,9 +6,11 @@ import { getRecipeById } from '../services/recipesAPI';
 
 function Details() {
   const [recipe, setRecipe] = useState({});
-  const [type, setType] = useState('');
+  const [type, setType] = useState({ idType: '', recomendationType: '' });
   const [recomendation, setRecomendation] = useState([]);
   const history = useHistory();
+
+  const NUMBER_FIVE = 5;
 
   useEffect(() => {
     const getRecipe = async () => {
@@ -16,19 +18,30 @@ function Details() {
       const recipeById = await getRecipeById(locationInfoArray[1], locationInfoArray[2]);
       setRecipe(recipeById.recipeById);
       setRecomendation(Object.values(recipeById.randomJson)[0]);
-      setType(locationInfoArray[1].includes('bebidas') ? 'Drink' : 'Meal');
+      setType({ idType: locationInfoArray[1].includes('bebidas') ? 'Drink' : 'Meal',
+        recomendationType: locationInfoArray[1].includes('bebidas') ? 'Meal' : 'Drink' });
     };
     getRecipe();
   }, [history]);
+
+  const verifyRecipe = () => {
+    if (JSON.parse(localStorage.getItem('doneRecipes'))) {
+      return !JSON.parse(localStorage.getItem('doneRecipes')).some((rec) => rec[`id${type.idType}`] === history.location.pathname.split('/')[2]);
+    }
+  };
 
   const ingredientKeys = Object.keys(recipe).filter((key) => (
     key.includes('strIngredient') && recipe[key] !== '' && recipe[key] !== null));
 
   return (
     <div>
-      <img data-testid="recipe-photo" src={ recipe[`str${type}Thumb`] } alt="recipe" />
+      <img
+        data-testid="recipe-photo"
+        src={ recipe[`str${type.idType}Thumb`] }
+        alt="recipe"
+      />
       <div>
-        <h4 data-testid="recipe-title">{recipe[`str${type}`]}</h4>
+        <h4 data-testid="recipe-title">{recipe[`str${type.idType}`]}</h4>
         <button type="button" data-testid="share-btn">
           <img src={ shareIcon } alt="shareIcon" />
         </button>
@@ -36,7 +49,7 @@ function Details() {
           <img src={ blackHeartIcon } alt="blackHeartIcon" />
         </button>
         <p data-testid="recipe-category">
-          {type === 'Drink' ? recipe.strAlcoholic : recipe.strCategory}
+          {type.idType === 'Drink' ? recipe.strAlcoholic : recipe.strCategory}
         </p>
       </div>
       <div>
@@ -53,7 +66,7 @@ function Details() {
         </p>
       </div>
       <div>
-        { type === 'Meal'
+        { type.idType === 'Meal'
         && <iframe
           data-testid="video"
           src={ `https://www.youtube.com/embed/${recipe.strYoutube.split('=')[1]}` }
@@ -65,15 +78,23 @@ function Details() {
       </div>
       <div>
         <h3>Recomendadas</h3>
-        {recomendation.map((rec, indice) => indice <= 5 && (
-          <div className="recomendation" data-testid={ `${indice}-recomendation-card` }>
-            <img src={ rec[`str${type === 'Drink' ? 'Meal' : 'Drink'}Thumb`] } alt="" />
-            <p>{type === 'Drink' ? rec.strCategory : rec.strAlcoholic}</p>
-            <h3 data-testid={ `${indice}-recomendation-title` }>{rec[`str${type === 'Drink' ? 'Meal' : 'Drink'}`]}</h3>
+        {recomendation.map((rec, indice) => indice <= NUMBER_FIVE && (
+          <div
+            key={ indice }
+            className="recomendation"
+            data-testid={ `${indice}-recomendation-card` }
+          >
+            <img src={ rec[`str${type.recomendationType}Thumb`] } alt="" />
+            <p>
+              {type.recomendationType === 'Drink' ? rec.strAlcoholic : rec.strCategory}
+            </p>
+            <h3 data-testid={ `${indice}-recomendation-title` }>
+              {rec[`str${type.recomendationType}`]}
+            </h3>
           </div>
         ))}
       </div>
-      <button data-testid="start-recipe-btn" type="button">Iniciar Receita</button>
+      {verifyRecipe() && <button data-testid="start-recipe-btn" type="button">Iniciar Receita</button>}
     </div>
   );
 }
