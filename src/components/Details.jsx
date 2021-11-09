@@ -3,6 +3,7 @@ import { useHistory } from 'react-router';
 import shareIcon from '../images/shareIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import { getRecipeById } from '../services/recipesAPI';
+import '../style/details.css';
 
 function Details() {
   const [recipe, setRecipe] = useState({});
@@ -26,7 +27,7 @@ function Details() {
 
   const verifyRecipe = () => {
     if (JSON.parse(localStorage.getItem('doneRecipes'))) {
-      return !JSON.parse(localStorage.getItem('doneRecipes')).some((rec) => rec[`id${type.idType}`] === history.location.pathname.split('/')[2]);
+      return JSON.parse(localStorage.getItem('doneRecipes')).some((rec) => rec[`id${type.idType}`] === history.location.pathname.split('/')[2]);
     }
   };
 
@@ -34,7 +35,7 @@ function Details() {
     key.includes('strIngredient') && recipe[key] !== '' && recipe[key] !== null));
 
   return (
-    <div>
+    <>
       <img
         data-testid="recipe-photo"
         src={ recipe[`str${type.idType}Thumb`] }
@@ -78,24 +79,40 @@ function Details() {
       </div>
       <div>
         <h3>Recomendadas</h3>
-        {recomendation.map((rec, indice) => indice <= NUMBER_FIVE && (
-          <div
-            key={ indice }
-            className="recomendation"
-            data-testid={ `${indice}-recomendation-card` }
-          >
-            <img src={ rec[`str${type.recomendationType}Thumb`] } alt="" />
-            <p>
-              {type.recomendationType === 'Drink' ? rec.strAlcoholic : rec.strCategory}
-            </p>
-            <h3 data-testid={ `${indice}-recomendation-title` }>
-              {rec[`str${type.recomendationType}`]}
-            </h3>
-          </div>
-        ))}
+        <div className="recomendation">
+          {recomendation.map((rec, indice) => indice <= NUMBER_FIVE && (
+            <div
+              key={ indice }
+              data-testid={ `${indice}-recomendation-card` }
+            >
+              <img
+                className="recipe-img"
+                src={ rec[`str${type.recomendationType}Thumb`] }
+                alt=""
+              />
+              <p>
+                {type.recomendationType === 'Drink' ? rec.strAlcoholic : rec.strCategory}
+              </p>
+              <h3 data-testid={ `${indice}-recomendation-title` }>
+                {rec[`str${type.recomendationType}`]}
+              </h3>
+            </div>
+          ))}
+        </div>
       </div>
-      {verifyRecipe() && <button data-testid="start-recipe-btn" type="button">Iniciar Receita</button>}
-    </div>
+      <div>
+        {verifyRecipe()
+      && (
+        <button
+          className="start-recipe-btn"
+          data-testid="start-recipe-btn"
+          type="button"
+        >
+          Iniciar Receita
+        </button>
+      )}
+      </div>
+    </>
   );
 }
 
