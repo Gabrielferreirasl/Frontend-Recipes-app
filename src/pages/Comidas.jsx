@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import Footer from '../components/Footer';
 import Header from '../components/Header';
 import RenderCategory from '../components/RenderCategory';
 import RenderRecipes from '../components/RenderRecipes';
@@ -20,6 +21,7 @@ function Comidas() {
       <Header type="Comidas" />
       <RenderCategory />
       <RenderRecipes items={ filters.category.status ? recipesFiltred.meals : meals } />
+      <Footer />
     </main>
   );
 }
