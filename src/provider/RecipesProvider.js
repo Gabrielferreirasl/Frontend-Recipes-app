@@ -7,9 +7,22 @@ function RecipesProvider({ children }) {
     drinks: [],
     meals: [],
   });
+
+  const [recipesFiltred, setRecipesFiltred] = useState({
+    drinks: [],
+    meals: [],
+  });
+
   const [categoryRecipes, setCategoryRecipes] = useState({
     categoryDrinks: [],
     categoryMeals: [],
+  });
+
+  const [filters, setFilters] = useState({
+    category: {
+      status: false,
+      filter: '',
+    },
   });
 
   const changeRecipes = (key, value = null) => {
@@ -27,6 +40,10 @@ function RecipesProvider({ children }) {
         setArrayRecipes,
         categoryRecipes,
         setCategoryRecipes,
+        filters,
+        setFilters,
+        recipesFiltred,
+        setRecipesFiltred,
       } }
     >
       { children }

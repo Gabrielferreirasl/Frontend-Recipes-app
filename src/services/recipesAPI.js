@@ -24,4 +24,12 @@ export const categoryRecipesApi = async (locationPathName) => {
   return data;
 };
 
+export const recipesByCategoryApi = async (category, locationPathName) => {
+  const url = locationPathName.includes('bebidas') ? 'thecocktaildb' : 'themealdb';
+  const endpoint = `https://www.${url}.com/api/json/v1/1/filter.php?c=${category}`;
+  const response = await fetch(endpoint);
+  const data = await response.json();
+  return data;
+};
+
 export default recipesAPI;

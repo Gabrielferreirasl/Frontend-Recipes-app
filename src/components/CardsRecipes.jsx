@@ -7,8 +7,6 @@ function CardsRecipes({ items, maxItems }) {
   const keyImgToRender = keyIdToRender === 'idMeal' ? 'strMealThumb' : 'strDrinkThumb';
   const keyNameToRender = keyIdToRender === 'idMeal' ? 'strMeal' : 'strDrink';
 
-  console.log(items);
-
   return (
     <main>
       {

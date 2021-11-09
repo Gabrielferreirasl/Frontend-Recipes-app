@@ -6,7 +6,7 @@ import RenderRecipes from '../components/RenderRecipes';
 import RenderCategory from '../components/RenderCategory';
 
 function Bebidas() {
-  const { recipes: { drinks } } = useContext(RecipesContext);
+  const { recipes: { drinks }, filters, recipesFiltred } = useContext(RecipesContext);
   const history = useHistory();
 
   useEffect(() => {
@@ -19,7 +19,7 @@ function Bebidas() {
     <main>
       <Header type="Bebidas" />
       <RenderCategory />
-      <RenderRecipes items={ drinks } />
+      <RenderRecipes items={ filters.category.status ? recipesFiltred.drinks : drinks } />
     </main>
   );
 }

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { categoryRecipesApi } from '../services/recipesAPI';
+import { categoryRecipesApi, recipesByCategoryApi } from '../services/recipesAPI';
 import RecipesContext from '../context/RecipesContext';
 
 function RenderCategory() {
@@ -13,7 +13,27 @@ function RenderCategory() {
   const {
     setCategoryRecipes,
     categoryRecipes,
+    setFilters,
+    filters,
+    setRecipesFiltred,
+    recipesFiltred,
   } = useContext(RecipesContext);
+
+  const handleClick = async ({ target }) => {
+    const { value } = target;
+    const { status, filter } = filters.category;
+    setFilters({
+      category: {
+        status: value === filter ? !status : true,
+        filter: value === filter ? '' : value,
+      },
+    });
+    const responseApi = await recipesByCategoryApi(value, history.location.pathname);
+    setRecipesFiltred({
+      ...recipesFiltred,
+      [key]: responseApi[key],
+    });
+  };
 
   useEffect(() => {
     const updateCategory = async () => {
@@ -39,6 +59,8 @@ function RenderCategory() {
                   key={ strCategory }
                   type="button"
                   data-testid={ `${strCategory}-category-filter` }
+                  onClick={ handleClick }
+                  value={ strCategory }
                 >
                   {strCategory}
                 </button>
