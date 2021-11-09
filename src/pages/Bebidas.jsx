@@ -21,7 +21,7 @@ function Bebidas() {
       <Header type="Bebidas" />
       <RenderCategory />
       <RenderRecipes items={ filters.category.status ? recipesFiltred.drinks : drinks } />
-      <Footer />  
+      <Footer />
     </main>
   );
 }
