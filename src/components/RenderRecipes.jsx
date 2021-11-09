@@ -7,11 +7,13 @@ import RecipesContext from '../context/RecipesContext';
 
 function RenderRecipes({ items }) {
   const history = useHistory();
-  const { setArrayRecipes } = useContext(RecipesContext);
+  const key = history.location.pathname.includes('/bebidas') ? 'drinks' : 'meals';
+  const {
+    setArrayRecipes,
+  } = useContext(RecipesContext);
 
   useEffect(() => {
     const updateRecipes = async () => {
-      const key = history.location.pathname.includes('/bebidas') ? 'drinks' : 'meals';
       const result = await recipesApiList(history.location.pathname);
       setArrayRecipes({
         drinks: [],
@@ -20,11 +22,16 @@ function RenderRecipes({ items }) {
       });
     };
     updateRecipes();
-  }, [history.location.pathname, setArrayRecipes]);
+  },
+  [history.location.pathname, key, setArrayRecipes]);
 
   return (
     <div>
-      {items.length !== 0 && <CardsRecipes maxItems={ 12 } items={ items } />}
+      <main>
+        {
+          items.length !== 0 && <CardsRecipes maxItems={ 12 } items={ items } />
+        }
+      </main>
     </div>
   );
 }

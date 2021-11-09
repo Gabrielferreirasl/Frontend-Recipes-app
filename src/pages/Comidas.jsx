@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import CardsRecipes from '../components/CardsRecipes';
 import Header from '../components/Header';
+import RenderCategory from '../components/RenderCategory';
 import RenderRecipes from '../components/RenderRecipes';
 import RecipesContext from '../context/RecipesContext';
 
@@ -18,7 +18,7 @@ function Comidas() {
   return (
     <main>
       <Header type="Comidas" />
-      {meals.length !== 0 && <CardsRecipes maxItems={ 12 } items={ meals } />}
+      <RenderCategory />
       <RenderRecipes items={ meals } />
     </main>
   );
