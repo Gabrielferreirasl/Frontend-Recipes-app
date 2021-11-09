@@ -17,7 +17,7 @@ function Comidas() {
   return (
     <main>
       <Header type="Comidas" />
-      {meals.length !== 0 && <CardsRecipes maxItems={ 11 } items={ meals } />}
+      {meals.length !== 0 && <CardsRecipes maxItems={ 12 } items={ meals } />}
     </main>
   );
 }
