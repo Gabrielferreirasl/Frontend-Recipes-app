@@ -8,6 +8,23 @@ function RecipesProvider({ children }) {
     meals: [],
   });
 
+  const [recipesFiltred, setRecipesFiltred] = useState({
+    drinks: [],
+    meals: [],
+  });
+
+  const [categoryRecipes, setCategoryRecipes] = useState({
+    categoryDrinks: [],
+    categoryMeals: [],
+  });
+
+  const [filters, setFilters] = useState({
+    category: {
+      status: false,
+      filter: '',
+    },
+  });
+
   const changeRecipes = (key, value = null) => {
     setArrayRecipes((prev) => ({
       ...prev,
@@ -16,7 +33,19 @@ function RecipesProvider({ children }) {
   };
 
   return (
-    <RecipesContext.Provider value={ { changeRecipes, recipes } }>
+    <RecipesContext.Provider
+      value={ {
+        changeRecipes,
+        recipes,
+        setArrayRecipes,
+        categoryRecipes,
+        setCategoryRecipes,
+        filters,
+        setFilters,
+        recipesFiltred,
+        setRecipesFiltred,
+      } }
+    >
       { children }
     </RecipesContext.Provider>
   );

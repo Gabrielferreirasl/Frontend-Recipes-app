@@ -10,7 +10,7 @@ function SearchBar() {
     type: '',
   });
 
-  const { changeRecipes } = useContext(RecipesContext);
+  const { changeRecipes, setFilters } = useContext(RecipesContext);
 
   const handleChange = ({ target: { value, name } }) => {
     setSearchInfo((prev) => ({
@@ -25,9 +25,18 @@ function SearchBar() {
     }
     const result = await recipesAPI(searchInfo, history.location.pathname);
     const key = history.location.pathname.includes('/bebidas') ? 'drinks' : 'meals';
-    return result[key] === null
-      ? global.alert('Sinto muito, não encontramos nenhuma receita para esses filtros.')
-      : changeRecipes(key, result[key]);
+    if (result[key] === null) {
+      return global.alert(
+        'Sinto muito, não encontramos nenhuma receita para esses filtros.',
+      );
+    }
+    changeRecipes(key, result[key]);
+    setFilters({
+      category: {
+        status: false,
+        filter: '',
+      },
+    });
   };
 
   return (

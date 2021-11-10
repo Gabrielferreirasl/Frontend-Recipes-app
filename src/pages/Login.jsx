@@ -27,7 +27,6 @@ function Login({ history }) {
     setLocalStorage('mealsToken', 1);
     setLocalStorage('cocktailsToken', 1);
     setLocalStorage('user', { email: emailAndPassword.email });
-    setLocalStorage('doneRecipes', []);
     history.push('/comidas');
   };
 
