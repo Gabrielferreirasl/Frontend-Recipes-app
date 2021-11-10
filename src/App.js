@@ -8,10 +8,11 @@ import Comidas from './pages/Comidas';
 import Explorar from './pages/Explorar';
 import Perfil from './pages/Perfil';
 import Bebidas from './pages/Bebidas';
-import Details from './components/Details';
+import Details from './pages/Details';
+import ExplorarComidasOuBedidas from './pages/ExplorarComidasOuBedidas';
+import InProgress from './pages/InProgress';
 import ReceitasFavoritas from './pages/ReceitasFavoritas';
 import ReceitasFeitas from './pages/ReceitasFeitas';
-import ExplorarComidasOuBedidas from './pages/ExplorarComidasOuBedidas';
 
 function App() {
   return (
@@ -24,6 +25,8 @@ function App() {
           <Route exact path="/comidas/:id" component={ Details } />
           <Route path="/explorar/comidas/" component={ ExplorarComidasOuBedidas } />
           <Route path="/explorar/bebidas/" component={ ExplorarComidasOuBedidas } />
+          <Route path="/comidas/:id/in-progress" component={ InProgress } />
+          <Route path="/bebidas/:id/in-progress" component={ InProgress } />
           <Route exact path="/explorar" component={ Explorar } />
           <Route exact path="/bebidas/:id" component={ Details } />
           <Route exact path="/bebidas" component={ Bebidas } />

@@ -14,9 +14,11 @@ function CardsRecipes({ items, maxItems }) {
       {
         items.map((item, index) => (
           index <= NUMBER_ELEVEN && (
-            <Link to={ `${history.location.pathname}${item[keyIdToRender]}` }>
+            <Link
+              key={ index }
+              to={ `${history.location.pathname}/${item[keyIdToRender]}` }
+            >
               <div
-                key={ item[keyIdToRender] }
                 data-testid={ `${index}-recipe-card` }
               >
                 <h4 data-testid={ `${index}-card-name` }>{item[keyNameToRender]}</h4>
