@@ -8,13 +8,13 @@ const recipesAPI = async ({ search, type }, history) => {
   return json;
 };
 
-export const getRecipeById = async (location, id) => {
-  const type = location.includes('bebidas') ? 'thecocktaildb' : 'themealdb';
+export const getRecipeById = async ({ typeKey, id }) => {
+  const type = typeKey === 'Drink' ? 'thecocktaildb' : 'themealdb';
   const endpoint = await fetch(`https://www.${type}.com/api/json/v1/1/lookup.php?i=${id}`);
   const endpointRandom = await fetch(`https://www.${type === 'thecocktaildb' ? 'themealdb' : 'thecocktaildb'}.com/api/json/v1/1/search.php?s=`);
   const randomJson = await endpointRandom.json();
   const json = await endpoint.json();
-  return { recipeById: json[location.includes('bebidas') ? 'drinks' : 'meals'][0],
+  return { recipeById: json[typeKey === 'Drink' ? 'drinks' : 'meals'][0],
     randomJson };
 };
 
