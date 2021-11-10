@@ -11,10 +11,8 @@ import Bebidas from './pages/Bebidas';
 import Details from './pages/Details';
 import ExplorarComidasOuBedidas from './pages/ExplorarComidasOuBedidas';
 import InProgress from './pages/InProgress';
-import Details from './components/Details';
 import ReceitasFavoritas from './pages/ReceitasFavoritas';
 import ReceitasFeitas from './pages/ReceitasFeitas';
-import ExplorarComidasOuBedidas from './pages/ExplorarComidasOuBedidas';
 
 function App() {
   return (
