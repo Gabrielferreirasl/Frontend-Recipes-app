@@ -11,9 +11,16 @@ function ReceitasFavoritas() {
 
   useEffect(() => {
     if (getLocalStorage('favoriteRecipes')) {
-      setRecipesFavorited(getLocalStorage('favoriteRecipes'));
+      const listFavoriteRecipes = getLocalStorage('favoriteRecipes');
+      if (filters.type !== 'all') {
+        const recipesFiltred = listFavoriteRecipes.filter((recipe) => recipe.type === filters.type);
+        console.log(recipesFiltred);
+        return setRecipesFavorited(recipesFiltred);
+      }
+      setRecipesFavorited(listFavoriteRecipes);
+      console.log('oi');
     }
-  }, []);
+  }, [filters.type, filters.typeToFilter]);
 
   const removeFavorite = (id) => {
     favoriteOrDisfavorite(recipesFavorited, id);

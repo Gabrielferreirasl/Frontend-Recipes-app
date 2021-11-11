@@ -48,7 +48,6 @@ function CardToFavoriteOrDone({ item, index, favoriteOrMade, removeFavorite }) {
       <button
         onClick={ handleShare }
         type="button"
-        // data-testid={ `${index}-horizontal-share-btn` }
       >
         <img
           data-testid={ `${index}-horizontal-share-btn` }
