@@ -48,4 +48,16 @@ export const getRecipeInfo = (history) => {
   };
 };
 
+export const updateRecipes = (keyLocalStorage, typeToFilter, setState) => {
+  if (getLocalStorage(keyLocalStorage)) {
+    const listFavoriteRecipes = getLocalStorage(keyLocalStorage);
+    if (typeToFilter !== 'all') {
+      const recipesFiltred = listFavoriteRecipes
+        .filter((recipe) => recipe.type === typeToFilter);
+      return setState(recipesFiltred);
+    }
+    setState(listFavoriteRecipes);
+  }
+};
+
 export default setLocalStorage;

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { favoriteOrDisfavorite, getLocalStorage } from '../helpers';
+import { favoriteOrDisfavorite, getLocalStorage, updateRecipes } from '../helpers';
 import FiltersByType from '../components/FiltersByType';
 import CardToFavoriteOrDone from '../components/CardToFavoriteOrDone';
 
@@ -10,17 +10,8 @@ function ReceitasFavoritas() {
   });
 
   useEffect(() => {
-    if (getLocalStorage('favoriteRecipes')) {
-      const listFavoriteRecipes = getLocalStorage('favoriteRecipes');
-      if (filters.type !== 'all') {
-        const recipesFiltred = listFavoriteRecipes.filter((recipe) => recipe.type === filters.type);
-        console.log(recipesFiltred);
-        return setRecipesFavorited(recipesFiltred);
-      }
-      setRecipesFavorited(listFavoriteRecipes);
-      console.log('oi');
-    }
-  }, [filters.type, filters.typeToFilter]);
+    updateRecipes('favoriteRecipes', filters.type, setRecipesFavorited);
+  }, [filters.type]);
 
   const removeFavorite = (id) => {
     favoriteOrDisfavorite(recipesFavorited, id);
