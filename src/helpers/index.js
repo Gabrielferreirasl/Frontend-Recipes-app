@@ -2,8 +2,8 @@ export const getLocalStorage = (key) => JSON.parse(localStorage.getItem(key));
 
 const setLocalStorage = (key, value) => localStorage.setItem(key, JSON.stringify(value));
 
-export const saveFavorite = (recipe, history) => {
-  const [, type, id] = history.location.pathname.split('/');
+export const saveFavorite = (recipe, { pathname }) => {
+  const [, type, id] = pathname.split('/');
   const key = type === 'bebidas' ? 'Drink' : 'Meal';
 
   const obj = {
@@ -32,21 +32,12 @@ export const saveFavorite = (recipe, history) => {
     : localStorage.setItem('favoriteRecipes', JSON.stringify([obj]));
 };
 
-export const handleFavoriteImg = (history) => {
+export const checkIsFavorite = ({ pathname }) => {
   const favorites = JSON.parse(localStorage.getItem('favoriteRecipes'));
   if (favorites) {
-    return favorites.some(({ id }) => id === history.location.pathname.split('/')[2]);
+    return favorites.some(({ id }) => id === pathname.split('/')[2]);
   }
   return false;
-};
-
-export const getRecipeInfo = (history) => {
-  const [, type, id] = history.location.pathname.split('/');
-  return {
-    typeKey: type === 'comidas' ? 'Meal' : 'Drink',
-    id,
-    isFavorite: handleFavoriteImg(history),
-  };
 };
 
 export default setLocalStorage;
