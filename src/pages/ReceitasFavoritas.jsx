@@ -1,26 +1,39 @@
 import React, { useEffect, useState } from 'react';
-import { getLocalStorage, saveFavorite } from '../helpers';
+import { favoriteOrDisfavorite, getLocalStorage } from '../helpers';
 import FiltersByType from '../components/FiltersByType';
+import CardToFavoriteOrDone from '../components/CardToFavoriteOrDone';
 
 function ReceitasFavoritas() {
-  const [recipesFavored, setRecipesFavored] = useState([]);
+  const [recipesFavorited, setRecipesFavorited] = useState([]);
   const [filters, setFilters] = useState({
     type: 'all',
   });
 
   useEffect(() => {
-    setRecipesFavored(getLocalStorage('favoriteRecipes'));
-    console.log('oi');
+    if (getLocalStorage('favoriteRecipes')) {
+      setRecipesFavorited(getLocalStorage('favoriteRecipes'));
+    }
   }, []);
+
+  const removeFavorite = (id) => {
+    favoriteOrDisfavorite(recipesFavorited, id);
+    setRecipesFavorited(getLocalStorage('favoriteRecipes'));
+  };
 
   return (
     <main>
       <nav>
         <FiltersByType filters={ filters } setState={ setFilters } />
-        { recipesFavored.length > 0
-        && recipesFavored.map((recipe, index) => (
-          <p>{recipe.name}</p>
-        ))}
+        { recipesFavorited.length > 0
+         && recipesFavorited.map((recipe, index) => (
+           <CardToFavoriteOrDone
+             key={ recipe.id }
+             item={ recipe }
+             index={ index }
+             favoriteOrMade="favorite"
+             removeFavorite={ removeFavorite }
+           />
+         ))}
       </nav>
     </main>
   );

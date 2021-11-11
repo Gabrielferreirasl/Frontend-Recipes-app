@@ -8,11 +8,6 @@ function RecipesProvider({ children }) {
     meals: [],
   });
 
-  // const [recipeInfo, setRecipeInfo] = useState({
-  //   typeKey: '',
-  //   id: '',
-  // });
-
   const [recipesFiltred, setRecipesFiltred] = useState({
     drinks: [],
     meals: [],

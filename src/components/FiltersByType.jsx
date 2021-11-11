@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function FiltersByType({ setState, filters: { type } }) {
-  const handlClick = ({ target }, setStateFilter) => {
+  const handleClick = ({ target }, setStateFilter) => {
     const { value } = target;
     setStateFilter({
       type: value === type ? 'all' : value,
@@ -14,7 +14,7 @@ function FiltersByType({ setState, filters: { type } }) {
       <button
         type="button"
         data-testid="filter-by-all-btn"
-        onClick={ (ev) => handlClick(ev, setState) }
+        onClick={ (ev) => handleClick(ev, setState) }
         value="all"
       >
         All
@@ -22,7 +22,7 @@ function FiltersByType({ setState, filters: { type } }) {
       <button
         type="button"
         data-testid="filter-by-food-btn"
-        onClick={ (ev) => handlClick(ev, setState) }
+        onClick={ (ev) => handleClick(ev, setState) }
         value="comida"
       >
         Food
@@ -30,7 +30,7 @@ function FiltersByType({ setState, filters: { type } }) {
       <button
         type="button"
         data-testid="filter-by-drink-btn"
-        onClick={ (ev) => handlClick(ev, setState) }
+        onClick={ (ev) => handleClick(ev, setState) }
         value="bebida"
       >
         Drinks

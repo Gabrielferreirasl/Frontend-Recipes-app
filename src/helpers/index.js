@@ -2,7 +2,7 @@ export const getLocalStorage = (key) => JSON.parse(localStorage.getItem(key));
 
 const setLocalStorage = (key, value) => localStorage.setItem(key, JSON.stringify(value));
 
-const favoriteOrDisfavorite = (favoriteRecipes, idToVerify, objToAdd) => { // adiciona ou remove receita da lista de favoritos
+export const favoriteOrDisfavorite = (favoriteRecipes, idToVerify, objToAdd) => { // adiciona ou remove receita da lista de favoritos
   if (favoriteRecipes.some((item) => item.id === idToVerify)) {
     const newArray = favoriteRecipes.filter((favorite) => favorite.id !== idToVerify);
     return setLocalStorage('favoriteRecipes', newArray);
