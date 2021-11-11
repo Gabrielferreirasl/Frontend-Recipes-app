@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
 import React from 'react';
+import PropTypes from 'prop-types';
 import Footer from '../components/Footer';
 import profileIcon from '../images/profileIcon.svg';
 
@@ -13,8 +13,6 @@ function Perfil({ history }) {
 
   return (
     <main>
-      <img data-testid="profile-top-btn" src={ profileIcon } alt="profileIcon" />
-      <h2 data-testid="page-title">Perfil</h2>
       <header>
         <img data-testid="profile-top-btn" src={ profileIcon } alt="profileIcon" />
         <h2 data-testid="page-title">Perfil</h2>
