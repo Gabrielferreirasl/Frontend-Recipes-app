@@ -2,11 +2,19 @@ export const getLocalStorage = (key) => JSON.parse(localStorage.getItem(key));
 
 const setLocalStorage = (key, value) => localStorage.setItem(key, JSON.stringify(value));
 
+const favoriteOrDisfavorite = (favoriteRecipes, idToVerify, objToAdd) => { // adiciona ou remove receita da lista de favoritos
+  if (favoriteRecipes.some((item) => item.id === idToVerify)) {
+    const newArray = favoriteRecipes.filter((favorite) => favorite.id !== idToVerify);
+    return setLocalStorage('favoriteRecipes', newArray);
+  }
+  setLocalStorage('favoriteRecipes', [...favoriteRecipes, objToAdd]);
+};
+
 export const saveFavorite = (recipe, history) => {
   const [, type, id] = history.location.pathname.split('/');
   const key = type === 'bebidas' ? 'Drink' : 'Meal';
 
-  const obj = {
+  const recipeToAdd = {
     id,
     type: type === 'comidas' ? 'comida' : 'bebida',
     area: type === 'bebidas' ? '' : recipe.strArea,
@@ -16,26 +24,17 @@ export const saveFavorite = (recipe, history) => {
     image: recipe[`str${key}Thumb`],
   };
 
-  const checkFavoriteExists = (favoriteRecipes) => {
-    if (favoriteRecipes.some((item) => item.id === id)) {
-      const newArray = favoriteRecipes.filter((favorite) => favorite.id !== id);
-      return localStorage.setItem('favoriteRecipes',
-        JSON.stringify(newArray));
-    }
-    localStorage.setItem('favoriteRecipes',
-      JSON.stringify([...favoriteRecipes, obj]));
-  };
-
-  const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
+  const favoriteRecipes = getLocalStorage('favoriteRecipes');
   return favoriteRecipes
-    ? checkFavoriteExists(favoriteRecipes)
-    : localStorage.setItem('favoriteRecipes', JSON.stringify([obj]));
+    ? favoriteOrDisfavorite(favoriteRecipes, id, recipeToAdd)
+    : setLocalStorage('favoriteRecipes', [recipeToAdd]);
 };
 
 export const handleFavoriteImg = (history) => {
-  const favorites = JSON.parse(localStorage.getItem('favoriteRecipes'));
-  if (favorites) {
-    return favorites.some(({ id }) => id === history.location.pathname.split('/')[2]);
+  const [,, idToVerify] = history.location.pathname.split('/');
+  const recipesFavorites = getLocalStorage('favoriteRecipes');
+  if (recipesFavorites) {
+    return recipesFavorites.some(({ id }) => id === idToVerify);
   }
   return false;
 };
