@@ -1,18 +1,25 @@
 import PropTypes from 'prop-types';
-import React from 'react';
-import { useHistory } from 'react-router';
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router';
+import { getRecomendations } from '../services/recipesAPI';
 
-function RecomendationsWithIframe({ obj: { recomendations, recipe } }) {
-  const history = useHistory();
+function RecomendationsWithIframe({ recipe }) {
+  const location = useLocation();
+  const [recomendations, setRecomendations] = useState([]);
+
+  useEffect(() => {
+    const initial = async () => setRecomendations(await getRecomendations(location));
+    initial();
+  }, [location]);
 
   const NUMBER_FIVE = 5;
-  const recomendationType = history.location.pathname.includes('bebidas')
+  const recomendationType = location.pathname.includes('bebidas')
     ? 'Meal' : 'Drink';
 
   return (
     <>
       <div>
-        { history.location.pathname.includes('comidas') && recipe.strYoutube
+        { recomendationType === 'Meal' && recipe.strYoutube
          && <iframe
            data-testid="video"
            src={ `https://www.youtube.com/embed/${recipe.strYoutube.split('=')[1]}` }
@@ -50,7 +57,7 @@ function RecomendationsWithIframe({ obj: { recomendations, recipe } }) {
 }
 
 RecomendationsWithIframe.propTypes = {
-  obj: PropTypes.objectOf(PropTypes.any).isRequired,
+  recipe: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 export default RecomendationsWithIframe;
