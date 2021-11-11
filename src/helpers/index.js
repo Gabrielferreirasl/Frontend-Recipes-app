@@ -57,7 +57,7 @@ export const checkProgress = (stepName, keyObj, id) => {
   const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
   const obj = { cocktails: {}, meals: {} };
   obj[keyObj] = { [id]: [stepName] };
-  return inProgressRecipes ? addOrRemoveProgress(inProgressRecipes, stepName, keyObj)
+  return inProgressRecipes ? addOrRemoveProgress(inProgressRecipes, stepName, keyObj, id)
     : localStorage.setItem('inProgressRecipes', JSON.stringify(obj));
 };
 
