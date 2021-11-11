@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory, useLocation } from 'react-router';
 import DetailsHeader from '../components/DetailsHeader';
+import { checkProgress, finishRecipe } from '../helpers';
 import { getRecipeById } from '../services/recipesAPI';
 
 function InProgress() {
@@ -32,32 +33,9 @@ function InProgress() {
     setRecipeSteps(obj);
   }, [id, keyObj, location.pathname, recipe]);
 
-  const addOrRemoveProgress = (inProgressRecipes, stepName) => {
-    if (Object.keys(inProgressRecipes[keyObj]).some((i) => i === id)) {
-      if (inProgressRecipes[keyObj][id].some((step) => step === stepName)) {
-        inProgressRecipes[keyObj][id] = inProgressRecipes[keyObj][id]
-          .filter((p) => p !== stepName);
-        return localStorage.setItem('inProgressRecipes',
-          JSON.stringify(inProgressRecipes));
-      }
-      inProgressRecipes[keyObj][id] = [...inProgressRecipes[keyObj][id], stepName];
-      return localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
-    }
-    inProgressRecipes[keyObj][id] = [stepName];
-    return localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
-  };
-
-  const checkProgress = (stepName) => {
-    const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
-    const obj = { cocktails: {}, meals: {} };
-    obj[keyObj] = { [id]: [stepName] };
-    return inProgressRecipes ? addOrRemoveProgress(inProgressRecipes, stepName)
-      : localStorage.setItem('inProgressRecipes', JSON.stringify(obj));
-  };
-
   const updateStepsState = ({ target: { name } }) => {
     setRecipeSteps((prev) => ({ ...prev, [name]: !prev[name] }));
-    checkProgress(name);
+    checkProgress(name, keyObj, id);
   };
 
   return (
@@ -95,7 +73,7 @@ function InProgress() {
             disabled={ !Object.values(recipeSteps).every((bool) => bool) }
             type="button"
             data-testid="finish-recipe-btn"
-            onClick={ () => history.push('/receitas-feitas') }
+            onClick={ () => finishRecipe(keyObj, history, id, recipe) }
           >
             Finalizar receita
 
