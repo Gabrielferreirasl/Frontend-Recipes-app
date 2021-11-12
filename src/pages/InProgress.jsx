@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory, useLocation } from 'react-router';
 import DetailsHeader from '../components/DetailsHeader';
 import { checkProgress, finishRecipe } from '../helpers';
+// import { checkProgress, finishRecipe } from '../helpers';
 import { getRecipeById } from '../services/recipesAPI';
 
 function InProgress() {

@@ -2,11 +2,19 @@ export const getLocalStorage = (key) => JSON.parse(localStorage.getItem(key));
 
 const setLocalStorage = (key, value) => localStorage.setItem(key, JSON.stringify(value));
 
+export const favoriteOrDisfavorite = (favoriteRecipes, idToVerify, objToAdd) => { // adiciona ou remove receita da lista de favoritos
+  if (favoriteRecipes.some((item) => item.id === idToVerify)) {
+    const newArray = favoriteRecipes.filter((favorite) => favorite.id !== idToVerify);
+    return setLocalStorage('favoriteRecipes', newArray);
+  }
+  setLocalStorage('favoriteRecipes', [...favoriteRecipes, objToAdd]);
+};
+
 export const saveFavorite = (recipe, { pathname }) => {
   const [, type, id] = pathname.split('/');
   const key = type === 'bebidas' ? 'Drink' : 'Meal';
 
-  const obj = {
+  const recipeToAdd = {
     id,
     type: type === 'comidas' ? 'comida' : 'bebida',
     area: type === 'bebidas' ? '' : recipe.strArea,
@@ -16,20 +24,10 @@ export const saveFavorite = (recipe, { pathname }) => {
     image: recipe[`str${key}Thumb`],
   };
 
-  const checkFavoriteExists = (favoriteRecipes) => {
-    if (favoriteRecipes.some((item) => item.id === id)) {
-      const newArray = favoriteRecipes.filter((favorite) => favorite.id !== id);
-      return localStorage.setItem('favoriteRecipes',
-        JSON.stringify(newArray));
-    }
-    localStorage.setItem('favoriteRecipes',
-      JSON.stringify([...favoriteRecipes, obj]));
-  };
-
-  const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
+  const favoriteRecipes = getLocalStorage('favoriteRecipes');
   return favoriteRecipes
-    ? checkFavoriteExists(favoriteRecipes)
-    : localStorage.setItem('favoriteRecipes', JSON.stringify([obj]));
+    ? favoriteOrDisfavorite(favoriteRecipes, id, recipeToAdd)
+    : setLocalStorage('favoriteRecipes', [recipeToAdd]);
 };
 
 export const checkIsFavorite = ({ pathname }) => {
@@ -59,7 +57,7 @@ export const checkProgress = (stepName, keyObj, id) => {
   const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
   const obj = { cocktails: {}, meals: {} };
   obj[keyObj] = { [id]: [stepName] };
-  return inProgressRecipes ? addOrRemoveProgress(inProgressRecipes, stepName, keyObj)
+  return inProgressRecipes ? addOrRemoveProgress(inProgressRecipes, stepName, keyObj, id)
     : localStorage.setItem('inProgressRecipes', JSON.stringify(obj));
 };
 
@@ -86,6 +84,18 @@ export const finishRecipe = (keyType, history, id, recipe) => {
   }
   localStorage.setItem('doneRecipes', JSON.stringify([obj]));
   return history.push('/receitas-feitas');
+};
+
+export const updateRecipes = (keyLocalStorage, typeToFilter, setState) => {
+  if (getLocalStorage(keyLocalStorage)) {
+    const listFavoriteRecipes = getLocalStorage(keyLocalStorage);
+    if (typeToFilter !== 'all') {
+      const recipesFiltred = listFavoriteRecipes
+        .filter((recipe) => recipe.type === typeToFilter);
+      return setState(recipesFiltred);
+    }
+    setState(listFavoriteRecipes);
+  }
 };
 
 export default setLocalStorage;
