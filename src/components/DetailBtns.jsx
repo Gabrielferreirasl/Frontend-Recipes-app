@@ -29,6 +29,7 @@ function DetailsBtns() {
           data-testid="start-recipe-btn"
           className="start-recipe-btn"
           type="button"
+          onClick={ () => history.push(`${history.location.pathname}/in-progress`) }
         >
           Continuar Receita
         </button>
