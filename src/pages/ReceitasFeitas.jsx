@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import CardToFavoriteOrDone from '../components/CardToFavoriteOrDone';
 import FiltersByType from '../components/FiltersByType';
 import { updateRecipes } from '../helpers';
@@ -17,7 +18,9 @@ function ReceitasFeitas() {
   return (
     <main>
       <header>
-        <img data-testid="profile-top-btn" src={ profileIcon } alt="profileIcon" />
+        <Link to="/perfil">
+          <img data-testid="profile-top-btn" src={ profileIcon } alt="profileIcon" />
+        </Link>
         <h2 data-testid="page-title">Receitas Feitas</h2>
       </header>
       <span>
