@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Footer from '../components/Footer';
 import profileIcon from '../images/profileIcon.svg';
+import Footer from '../components/Footer';
 
 function Perfil({ history }) {
   const emailUser = JSON.parse(localStorage.getItem('user'));
