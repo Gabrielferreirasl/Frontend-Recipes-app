@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import CardToFavoriteOrDone from '../components/CardToFavoriteOrDone';
 import FiltersByType from '../components/FiltersByType';
-import { getLocalStorage, updateRecipes } from '../helpers';
+import { updateRecipes } from '../helpers';
 import profileIcon from '../images/profileIcon.svg';
 
 function ReceitasFeitas() {
@@ -21,15 +21,6 @@ function ReceitasFeitas() {
         <h2 data-testid="page-title">Receitas Feitas</h2>
       </header>
       <span>
-        {/* <button type="button" data-testid="filter-by-all-btn">
-          All
-        </button>
-        <button type="button" data-testid="filter-by-food-btn">
-          Food
-        </button>
-        <button type="button" data-testid="filter-by-drink-btn">
-          Drinks
-        </button> */}
         <FiltersByType filters={ filters } setState={ setFilters } />
       </span>
       <div>

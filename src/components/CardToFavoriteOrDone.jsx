@@ -72,12 +72,12 @@ function CardToFavoriteOrDone({ item, index, favoriteOrMade, removeFavorite }) {
         )
       }
       {
-        !itemIsFavorite && type === 'comidas'
+        !itemIsFavorite && type === 'comidas' && item.tags.length > 0
           ? (
             item.tags.map((tag, indexTag) => (
               <span
                 key={ indexTag }
-                data-testid={ `${indexTag}-${tag}-horizontal-tag` }
+                data-testid={ `${index}-${tag}-horizontal-tag` }
               >
                 { tag }
               </span>
