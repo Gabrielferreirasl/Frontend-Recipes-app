@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 function CardsRecipes({ items, maxItems }) {
@@ -7,7 +7,7 @@ function CardsRecipes({ items, maxItems }) {
   const keyIdToRender = Object.keys(items[0]).filter((key) => key.includes('id'))[0]; // extrai a chave referente ao id para comida ou bebida
   const keyImgToRender = keyIdToRender === 'idMeal' ? 'strMealThumb' : 'strDrinkThumb';
   const keyNameToRender = keyIdToRender === 'idMeal' ? 'strMeal' : 'strDrink';
-  const history = useHistory();
+  const url = keyIdToRender === 'idMeal' ? 'comidas' : 'bebidas';
 
   return (
     <main>
@@ -16,7 +16,7 @@ function CardsRecipes({ items, maxItems }) {
           index <= NUMBER_ELEVEN && (
             <Link
               key={ index }
-              to={ `${history.location.pathname}/${item[keyIdToRender]}` }
+              to={ `/${url}/${item[keyIdToRender]}` }
             >
               <div
                 data-testid={ `${index}-recipe-card` }

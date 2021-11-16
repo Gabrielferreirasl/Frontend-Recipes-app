@@ -1,7 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import RecipesContext from '../context/RecipesContext';
 import { getIngredients, getRecipesByIngredient } from '../services/recipesAPI';
+import profileIcon from '../images/profileIcon.svg';
+import Footer from '../components/Footer';
 
 function ExplorarIngredientes() {
   const history = useHistory();
@@ -28,6 +30,12 @@ function ExplorarIngredientes() {
 
   return (
     <main>
+      <header>
+        <Link to="/perfil">
+          <img data-testid="profile-top-btn" src={ profileIcon } alt="profileIcon" />
+        </Link>
+        <h2 data-testid="page-title">Explorar Ingredientes</h2>
+      </header>
       {ingredients && ingredients.map((item, index) => (
         <button key={ index } type="button" onClick={ () => handleClick(item) }>
           <div data-testid={ `${index}-ingredient-card` }>
@@ -40,6 +48,7 @@ function ExplorarIngredientes() {
           </div>
         </button>
       ))}
+      <Footer />
     </main>
   );
 }

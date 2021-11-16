@@ -88,11 +88,23 @@ function CardToFavoriteOrDone({ item, index, favoriteOrMade, removeFavorite }) {
   );
 }
 
+CardToFavoriteOrDone.defaultProps = { removeFavorite: () => null };
+
 CardToFavoriteOrDone.propTypes = {
-  item: PropTypes.objectOf(PropTypes.string).isRequired,
-  index: PropTypes.number.isRequired,
   favoriteOrMade: PropTypes.string.isRequired,
-  removeFavorite: PropTypes.func.isRequired,
+  index: PropTypes.number.isRequired,
+  item: PropTypes.shape({
+    alcoholicOrNot: PropTypes.string,
+    area: PropTypes.string,
+    category: PropTypes.string,
+    doneDate: PropTypes.string,
+    id: PropTypes.string,
+    image: PropTypes.string,
+    name: PropTypes.string,
+    tags: PropTypes.arrayOf(PropTypes.string),
+    type: PropTypes.string,
+  }).isRequired,
+  removeFavorite: PropTypes.func,
 };
 
 export default CardToFavoriteOrDone;

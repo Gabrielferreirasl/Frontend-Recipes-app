@@ -71,4 +71,16 @@ export const getRecipesByIngredient = async (history, Ingredient) => {
   return response[url === 'thecocktaildb' ? 'drinks' : 'meals'];
 };
 
+export const getAreas = async () => {
+  const endpoint = await fetch('https://www.themealdb.com/api/json/v1/1/list.php?a=list');
+  const response = await endpoint.json();
+  return response.meals;
+};
+
+export const getRecipesByArea = async (area) => {
+  const endpoint = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${area}`);
+  const response = await endpoint.json();
+  return response;
+};
+
 export default recipesAPI;
