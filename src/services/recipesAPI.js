@@ -47,4 +47,11 @@ export const recipesByCategoryApi = async (category, locationPathName) => {
   return data;
 };
 
+export const getRandomRecipe = async (type) => {
+  const url = type === 'Comidas' ? 'themealdb' : 'thecocktaildb';
+  const endpoint = await fetch(`https://www.${url}.com/api/json/v1/1/random.php`);
+  const response = await endpoint.json();
+  return Object.values(response)[0];
+};
+
 export default recipesAPI;

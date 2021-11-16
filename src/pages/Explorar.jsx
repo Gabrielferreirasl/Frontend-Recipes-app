@@ -20,7 +20,6 @@ function Explorar() {
         type="button"
       >
         Explorar Comidas
-
       </button>
       <button
         onClick={ () => history.push('/explorar/bebidas') }
@@ -28,7 +27,6 @@ function Explorar() {
         type="button"
       >
         Explorar Bebidas
-
       </button>
       <Footer />
     </main>
