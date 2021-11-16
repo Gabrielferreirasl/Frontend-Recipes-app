@@ -54,4 +54,21 @@ export const getRandomRecipe = async (type) => {
   return Object.values(response)[0];
 };
 
+export const getIngredients = async (history) => {
+  const MAX_INDEX = 12;
+  const url = history.location.pathname.includes('bebidas')
+    ? 'thecocktaildb' : 'themealdb';
+  const endpoint = await fetch(`https://www.${url}.com/api/json/v1/1/list.php?i=list`);
+  const response = await endpoint.json();
+  return response[url === 'thecocktaildb' ? 'drinks' : 'meals'].slice(0, MAX_INDEX);
+};
+
+export const getRecipesByIngredient = async (history, Ingredient) => {
+  const url = history.location.pathname.includes('bebidas')
+    ? 'thecocktaildb' : 'themealdb';
+  const endpoint = await fetch(`https://www.${url}.com/api/json/v1/1/filter.php?i=${Ingredient}`);
+  const response = await endpoint.json();
+  return response[url === 'thecocktaildb' ? 'drinks' : 'meals'];
+};
+
 export default recipesAPI;

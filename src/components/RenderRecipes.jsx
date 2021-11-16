@@ -10,6 +10,7 @@ function RenderRecipes({ items }) {
   const key = history.location.pathname.includes('/bebidas') ? 'drinks' : 'meals';
   const {
     setArrayRecipes,
+    recipes,
   } = useContext(RecipesContext);
 
   useEffect(() => {
@@ -21,9 +22,11 @@ function RenderRecipes({ items }) {
         [key]: result[key],
       });
     };
-    updateRecipes();
+    if (recipes[key].length === 0) {
+      updateRecipes();
+    }
   },
-  [history.location.pathname, key, setArrayRecipes]);
+  [history.location.pathname, key, recipes, setArrayRecipes]);
 
   return (
     <div>
