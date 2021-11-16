@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types';
 import React from 'react';
-import Footer from '../components/Footer';
+import PropTypes from 'prop-types';
 import profileIcon from '../images/profileIcon.svg';
+import Footer from '../components/Footer';
 
 function Perfil({ history }) {
   const emailUser = JSON.parse(localStorage.getItem('user'));
@@ -13,8 +13,6 @@ function Perfil({ history }) {
 
   return (
     <main>
-      <img data-testid="profile-top-btn" src={ profileIcon } alt="profileIcon" />
-      <h2 data-testid="page-title">Perfil</h2>
       <header>
         <img data-testid="profile-top-btn" src={ profileIcon } alt="profileIcon" />
         <h2 data-testid="page-title">Perfil</h2>
