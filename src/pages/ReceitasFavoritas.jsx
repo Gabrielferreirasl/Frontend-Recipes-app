@@ -26,7 +26,7 @@ function ReceitasFavoritas() {
         <Link to="/perfil">
           <img data-testid="profile-top-btn" src={ profileIcon } alt="profileIcon" />
         </Link>
-        <h2 data-testid="page-title">Receitas Feitas</h2>
+        <h2 data-testid="page-title">Receitas Favoritas</h2>
       </header>
       <nav>
         <FiltersByType filters={ filters } setState={ setFilters } />

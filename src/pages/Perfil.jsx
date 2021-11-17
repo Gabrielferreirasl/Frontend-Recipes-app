@@ -18,7 +18,7 @@ function Perfil({ history }) {
         <h2 data-testid="page-title">Perfil</h2>
       </header>
       <div>
-        <h3 data-testid="profile-email">{ emailUser.email }</h3>
+        <h3 data-testid="profile-email">{ emailUser ? emailUser.email : '' }</h3>
         <button
           type="button"
           data-testid="profile-done-btn"
