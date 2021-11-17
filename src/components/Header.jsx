@@ -8,7 +8,7 @@ import SearchBar from './SearchBar';
 function Header({ type }) {
   const [searchBar, setSearchBar] = useState(false);
   return (
-    <div>
+    <header>
       <Link to="/perfil">
         <img data-testid="profile-top-btn" src={ profileIcon } alt="profileIcon" />
       </Link>
@@ -17,7 +17,7 @@ function Header({ type }) {
         <img data-testid="search-top-btn" src={ searchIcon } alt="searchIcon" />
       </button>
       {searchBar && <SearchBar />}
-    </div>
+    </header>
   );
 }
 

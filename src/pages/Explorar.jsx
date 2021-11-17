@@ -1,12 +1,35 @@
 import React from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import Footer from '../components/Footer';
 import profileIcon from '../images/profileIcon.svg';
 
 function Explorar() {
+  const history = useHistory();
+
   return (
-    <div>
-      <img data-testid="profile-top-btn" src={ profileIcon } alt="profileIcon" />
-      <h2 data-testid="page-title">Explorar</h2>
-    </div>
+    <main>
+      <header>
+        <Link to="/perfil">
+          <img data-testid="profile-top-btn" src={ profileIcon } alt="profileIcon" />
+        </Link>
+        <h2 data-testid="page-title">Explorar</h2>
+      </header>
+      <button
+        onClick={ () => history.push('/explorar/comidas') }
+        data-testid="explore-food"
+        type="button"
+      >
+        Explorar Comidas
+      </button>
+      <button
+        onClick={ () => history.push('/explorar/bebidas') }
+        data-testid="explore-drinks"
+        type="button"
+      >
+        Explorar Bebidas
+      </button>
+      <Footer />
+    </main>
   );
 }
 

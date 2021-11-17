@@ -1,0 +1,22 @@
+* {
+  max-width: 360px;
+}
+
+.recomendation {
+  display: flex;
+  flex-direction: row;
+  overflow: scroll;
+}
+
+.recipe-img {
+  width: 180px;
+}
+
+.recomendation img {
+  height: 150px;
+}
+
+.start-recipe-btn {
+  bottom: 0;
+  position: fixed;
+}
