@@ -9,7 +9,6 @@ function RenderCategory() {
   const key = history.location.pathname.includes('/bebidas') ? 'drinks' : 'meals';
   const keyToCategory = history.location.pathname
     .includes('/bebidas') ? 'categoryDrinks' : 'categoryMeals';
-
   const {
     setCategoryRecipes,
     categoryRecipes,

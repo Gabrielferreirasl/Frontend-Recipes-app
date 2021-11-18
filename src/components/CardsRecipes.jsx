@@ -15,6 +15,7 @@ function CardsRecipes({ items, maxItems }) {
         items.map((item, index) => (
           index <= NUMBER_ELEVEN && (
             <Link
+              data-testid={ `${index}-link-card` }
               key={ index }
               to={ `/${url}/${item[keyIdToRender]}` }
             >
