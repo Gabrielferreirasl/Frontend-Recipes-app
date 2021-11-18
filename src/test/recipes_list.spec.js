@@ -2,12 +2,20 @@ import React from 'react';
 import { cleanup, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { recipesApiMock as dataMock,
-  oneRecipe, categoryApi, RecipesDrinksCocktail, searchIngredientIce } from './mocks';
+  oneRecipe, categoryApi, RecipesDrinksCocktail,
+  searchIngredientIce, searchNomeVodka, searchFirstLetter } from './mocks';
 import * as ApiFuncs from '../services/recipesAPI';
 import renderWithRouter from '../helpers/renderWithRouter';
 import Bebidas from '../pages/Bebidas';
 import RenderRecipes from '../components/RenderRecipes';
 import renderPath from '../helpers/renderPath';
+
+const openSearchBar = async () => {
+  const buttonOpen = await screen.findByTestId('search-button');
+  expect(buttonOpen).toBeInTheDocument();
+
+  userEvent.click(buttonOpen);
+};
 
 describe('Testa funcionamento do componente RenderRecipes', () => {
   it('Verifica se o componente RenderRecipes renderiza todos os cards', async () => {
@@ -81,21 +89,20 @@ describe('Verifica funcionamento dos botões de filtro por'
   it('Verifica se a pagina esta renderizando'
     + 'todas os botões categorias de acordo com a pagina "bebidas/comidas"', async () => {
     renderPath('/bebidas');
-    const button = await screen.findByText('Ordinary Drink');
-    expect(button).toBeInTheDocument();
+    expect(await screen.findByText('Ordinary Drink')).toBeInTheDocument();
   });
 
   it('Verifica se ao clicar na categoria renderiza'
   + 'somente as receitas da categoria selecionada', async () => {
     renderPath('/bebidas');
     expect(await screen.findByText('GG')).toBeInTheDocument();
-    const buttonCocktail = await screen.findByText('Cocktail');
-    expect(buttonCocktail).toBeInTheDocument();
-
-    userEvent.click(buttonCocktail);
+    userEvent.click(await screen.findByText('Cocktail'));
     expect(await screen.findByText(/155 Belmont/i)).toBeInTheDocument();
   });
 });
+
+const SEARCH_INPUT = 'search-input';
+const EXEC_SEARCH_BTN = 'exec-search-btn';
 
 describe('Verifica funcionamento dos filtros do header', () => {
   beforeEach(() => {
@@ -111,13 +118,10 @@ describe('Verifica funcionamento dos filtros do header', () => {
   it('verifica se ao pesquisar por ingrediente,'
     + 'renderiza receitas somente o ingrediente pesquisado', async () => {
     renderPath('/bebidas');
-    const buttonOpen = await screen.findByTestId('search-button');
-    expect(buttonOpen).toBeInTheDocument();
-
-    userEvent.click(buttonOpen);
-    const inputSearch = await screen.findByTestId('search-input');
+    openSearchBar();
+    const inputSearch = await screen.findByTestId(SEARCH_INPUT);
     const checkIngredient = await screen.findByLabelText(/ingrediente/i);
-    const buttonSearch = await screen.findByTestId('exec-search-btn');
+    const buttonSearch = await screen.findByTestId(EXEC_SEARCH_BTN);
     expect(checkIngredient).toBeInTheDocument();
     expect(inputSearch).toBeInTheDocument();
 
@@ -125,5 +129,30 @@ describe('Verifica funcionamento dos filtros do header', () => {
     userEvent.click(checkIngredient);
     userEvent.click(buttonSearch);
     expect(await screen.findByText('A Piece of Ass')).toBeInTheDocument();
+  });
+
+  jest.spyOn(ApiFuncs, 'recipesAPI')
+    .mockImplementation(() => Promise.resolve(searchNomeVodka));
+
+  it('verifica se ao pesquisar por nome,'
+  + 'renderiza apenas receitas com o nome pesquisado', async () => {
+    renderPath('/bebidas');
+    openSearchBar();
+    userEvent.type(await screen.findByTestId(SEARCH_INPUT), 'vodka');
+    userEvent.click(await screen.findByLabelText(/nome/i));
+    userEvent.click(await screen.findByTestId(EXEC_SEARCH_BTN));
+    expect(await screen.findByText('Long vodka')).toBeInTheDocument();
+  });
+
+  jest.spyOn(ApiFuncs, 'recipesAPI')
+    .mockImplementation(() => Promise.resolve(searchFirstLetter));
+  it('verifica se ao pesquisar pela primeira letra'
+  + 'renderiza apenas receitas filtrado pela primeira letrar', async () => {
+    renderPath('/bebidas');
+    openSearchBar();
+    userEvent.type(await screen.findByTestId(SEARCH_INPUT), 'a');
+    userEvent.click(await screen.findByLabelText(/primeira letra/i));
+    userEvent.click(await screen.findByTestId(EXEC_SEARCH_BTN));
+    expect(await screen.findByText('A1')).toBeInTheDocument();
   });
 });

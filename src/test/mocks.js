@@ -213,3 +213,37 @@ export const searchIngredientIce = {
       idDrink: '14372',
     }],
 };
+
+export const searchNomeVodka = {
+  drinks: [
+    {
+      idDrink: '13196',
+      strDrink: 'Long vodka',
+      strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/9179i01503565212.jpg',
+    },
+    {
+      idDrink: '16967',
+      strDrink: 'Vodka Fizz',
+      strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/xwxyux1441254243.jpg',
+    }],
+};
+
+export const searchFirstLetter = {
+  drinks: [
+    {
+      idDrink: '17222',
+      strDrink: 'A1',
+      strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/2x8thr1504816928.jpg',
+    },
+    {
+      idDrink: '13501',
+      strDrink: 'ABC',
+      strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/tqpvqp1472668328.jpg',
+    },
+    {
+      idDrink: '17225',
+      strDrink: 'Ace',
+      strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/l3cd7f1504818306.jpg',
+    },
+  ],
+};
