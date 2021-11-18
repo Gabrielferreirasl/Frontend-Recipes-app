@@ -1,4 +1,4 @@
-const recipesAPI = async ({ search, type }, history) => {
+export const recipesAPI = async ({ search, type }, history) => {
   const searchType = type === 'Ingrediente' ? 'filter' : 'search';
   const filter = (type === 'Ingrediente' && 'i')
   || (type === 'Nome' && 's') || (type === 'Primeira letra' && 'f');
