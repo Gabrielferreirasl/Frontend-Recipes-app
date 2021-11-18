@@ -1,3 +1,4 @@
+const imgA1 = 'https://www.thecocktaildb.com/images/media/drink/2x8thr1504816928.jpg';
 export const recipesApiMock = {
   drinks: [
     {
@@ -8,7 +9,7 @@ export const recipesApiMock = {
     {
       idDrink: '17222',
       strDrink: 'A1',
-      strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/2x8thr1504816928.jpg',
+      strDrinkThumb: imgA1,
     },
     {
       idDrink: '13501',
@@ -25,12 +26,6 @@ export const recipesApiMock = {
       strDrink: '747',
       strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/xxsxqy1472668106.jpg',
     },
-    {
-      idDrink: '17225',
-      strDrink: 'Ace',
-      strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/l3cd7f1504818306.jpg',
-    },
-
   ],
 };
 
@@ -124,7 +119,7 @@ export const RecipesDrinksCocktail = {
     },
     {
       strDrink: 'A1',
-      strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/2x8thr1504816928.jpg',
+      strDrinkThumb: imgA1,
       idDrink: '17222',
     },
     {
