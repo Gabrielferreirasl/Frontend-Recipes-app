@@ -1,8 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import setLocalStorage from '../helpers';
-// import RecipesContext from '../context/RecipesContext';
 
 function Login({ history }) {
   const [emailAndPassword, setEmailAndPassword] = useState({
@@ -30,8 +28,6 @@ function Login({ history }) {
     setLocalStorage('user', { email: emailAndPassword.email });
     history.push('/comidas');
   };
-
-  console.log(useLocation);
 
   return (
     <main>

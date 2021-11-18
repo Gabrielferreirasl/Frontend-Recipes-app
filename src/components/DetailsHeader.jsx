@@ -43,7 +43,7 @@ function DetailsHeader({ recipe }) {
         >
           <img src={ shareIcon } alt="shareIcon" />
         </button>
-        {infoRecipe.copied && <p>Link copiado!</p>}
+        {infoRecipe.copied && <p data-testid="copiado">Link copiado!</p>}
         <button
           value="fav"
           onClick={ (ev) => handleShareAndFav(ev) }
