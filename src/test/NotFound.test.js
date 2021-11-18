@@ -7,7 +7,7 @@ describe('Testa a página não encontrada', () => {
   it('teste se a mensagem "not found" é renderizada na tela', () => {
     const { history } = renderWithRouter(<App />);
     history.push('/comias');
-    const notFoundPage = screen.getByText(/Not Found/i);
+    const notFoundPage = screen.getByText(/not found/i);
     expect(notFoundPage).toBeInTheDocument();
 
     history.push('/comidas');
