@@ -1,40 +1,40 @@
 .login-group {
-    margin-top: 45%;
+  margin-top: 45%;
 }
 
 .btn-entrar {
-    color: white;
-    margin-top: 20%;
-    max-width: 75%;
-    border-radius: 7px;
-    background-color: #EF3E36;
-    opacity: 1.0;
+  background-color: #ef3e36;
+  border-radius: 7px;
+  color: white;
+  margin-top: 20%;
+  max-width: 75%;
+  opacity: 1;
 }
 
 .pass {
-    padding: 20px;
-    margin: 10px;
-    max-width: 80%;
-    background: #303030;
+  background: #303030;
+  margin: 10px;
+  max-width: 80%;
+  padding: 20px;
 }
 
 .email {
-    padding: 20px;
-    margin: 10px;
-    max-width: 80%;
-    background: #303030;
+  background: #303030;
+  margin: 10px;
+  max-width: 80%;
+  padding: 20px;
 }
 
 .title-login {
-    margin-top: 25%;
+  margin-top: 25%;
 }
 
 body {
-    background-color:chocolate;
-    background: url("../images/flat-lay-brazilian-food-with-copy-space.jpg") fixed no-repeat;
-    background-size: 100% 100%;
+  background: url('../images/flat-lay-brazilian-food-with-copy-space.jpg') fixed no-repeat;
+  background-color: chocolate;
+  background-size: 100% 100%;
 }
 
 input {
-    max-width: 70%;
+  max-width: 70%;
 }
