@@ -21,8 +21,17 @@ const recipeRandom = [
   },
 ];
 
-jest.spyOn(APIfuncs, 'getRandomRecipe')
-  .mockImplementation(() => Promise.resolve(recipeRandom));
+const randomApi = jest.spyOn(APIfuncs, 'getRandomRecipe')
+  .mockImplementation((type) => {
+    if (type === 'Comidas') {
+      return Promise.resolve(recipeRandom);
+    }
+    return Promise.resolve([
+      {
+        teste: 'oi',
+      },
+    ]);
+  });
 
 const ROUTE_EXPLORAR_COMIDAS = '/explorar/comidas';
 
@@ -55,5 +64,7 @@ describe('verifica se os botões estão redirecionando para tela correta', () =>
 
     userEvent.click(randomBtn);
     await waitFor(() => expect(history.location.pathname).toBe('/comidas/52938'));
+    expect(randomApi).toBeCalled();
+    expect(randomApi).toBeCalledWith('Comidas');
   });
 });
