@@ -2,7 +2,7 @@ import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import recipeByIdComida from '../mocks/recipeByIdComida';
 import * as APIfuncs from '../services/recipesAPI';
-import renderPath from '../helpers/RenderPath';
+import renderPath from '../helpers/renderPath';
 
 const getRecipeByIdMock = jest.spyOn(APIfuncs, 'getRecipeById')
   .mockImplementation(() => Promise.resolve(recipeByIdComida));
