@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import setLocalStorage from '../helpers';
-// import RecipesContext from '../context/RecipesContext';
 
 function Login({ history }) {
   const [emailAndPassword, setEmailAndPassword] = useState({

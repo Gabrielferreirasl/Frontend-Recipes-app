@@ -40,7 +40,7 @@ function RecomendationsWithIframe({ recipe }) {
               <img
                 className="recipe-img"
                 src={ rec[`str${recomendationType}Thumb`] }
-                alt=""
+                alt={ rec[`str${recomendationType}`] }
               />
               <p>
                 {recomendationType === 'Drink' ? rec.strAlcoholic : rec.strCategory}
