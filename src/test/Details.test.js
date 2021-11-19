@@ -1,15 +1,28 @@
 import { screen } from '@testing-library/react';
+import { waitFor } from '@testing-library/dom';
 import userEvent from '@testing-library/user-event';
 import recipeByIdComida from '../mocks/recipeByIdComida';
 import DrinksRecomendation from '../mocks/DrinksRecomendation';
 import * as APIfuncs from '../services/recipesAPI';
 import renderPath from '../helpers/renderPath';
+import 'mutationobserver-shim';
 
 const getRecipeByIdMock = jest.spyOn(APIfuncs, 'getRecipeById')
   .mockImplementation(() => Promise.resolve(recipeByIdComida));
 
 const getRecomendationsMock = jest.spyOn(APIfuncs, 'getRecomendations')
   .mockImplementation(() => Promise.resolve(DrinksRecomendation));
+
+let clipboardData = '';
+const mockClipboard = {
+  writeText: jest.fn(
+    (data) => { clipboardData = data; },
+  ),
+  readText: jest.fn(
+    () => clipboardData,
+  ),
+};
+global.navigator.clipboard = mockClipboard;
 
 describe('Testes do componente "Details"', () => {
   test('verifica se as informações estão na tela', async () => {
@@ -33,12 +46,15 @@ describe('Testes do componente "Details"', () => {
     });
     userEvent.click(await screen.getByTestId('favorite-btn'));
     expect(await screen.getByAltText('fav').src).toBe('http://localhost/comidas/blackHeartIcon.svg');
+    expect(JSON.parse(localStorage.getItem('favoriteRecipes'))[0].id).toBe('52772');
 
-    userEvent.click(await screen.findByTestId('share-btn'));
+    userEvent.click(await screen.findByAltText('shareIcon'));
 
-    // expect(navigator.clipboard.writeText).toHaveBeenCalled();
-    // expect(navigator.clipboard.writeText)
-    //   .toHaveBeenCalledWith(expect.stringContaining('comidas/52771'));
+    await waitFor(() => {
+      expect(navigator.clipboard.writeText).toBeCalled();
+      expect(screen.queryByText(/link copiado/i)).toBeInTheDocument();
+      expect(navigator.clipboard.writeText).toHaveBeenCalledWith('http://localhost:3000/comidas/52772');
+    });
   });
 
   test('verifica se as receitas recomendadas estão corretas', async () => {

@@ -1,5 +1,7 @@
 import { screen } from '@testing-library/react';
+import { waitFor, waitForElementToBeRemoved } from '@testing-library/dom';
 import userEvent from '@testing-library/user-event';
+import 'mutationobserver-shim';
 import React from 'react';
 import renderWithRouter from '../helpers/renderWithRouter';
 import ReceitasFeitas from '../pages/ReceitasFeitas';
@@ -54,7 +56,8 @@ describe('Testa a página de receitas feitas', () => {
     expect(doneRecipesTitle).toBeInTheDocument();
   });
 
-  it('Testa se botões estão sendo renderizados', () => {
+  it('Testa se botões estão sendo renderizados', async () => {
+    localStorage.setItem('doneRecipes', JSON.stringify(DONE_RECIPE));
     renderWithRouter(<ReceitasFeitas />);
     const renderAllBtn = screen.getByRole('button', {
       name: /all/i,
@@ -65,11 +68,25 @@ describe('Testa a página de receitas feitas', () => {
       name: /food/i,
     });
     expect(renderFoodBtn).toBeInTheDocument();
+    const drink = screen.getByText(/747/i);
+    userEvent.click(renderFoodBtn);
+    await waitForElementToBeRemoved(() => screen.queryByText(/747/i));
+    expect(drink).not.toBeInTheDocument();
 
     const renderDrinksBtn = screen.getByRole('button', {
       name: /drinks/i,
     });
     expect(renderDrinksBtn).toBeInTheDocument();
+    const meal = screen.getByText(/Kumpir/i);
+    userEvent.click(renderDrinksBtn);
+    await waitForElementToBeRemoved(() => screen.queryByText(/Kumpir/i));
+    expect(meal).not.toBeInTheDocument();
+
+    userEvent.click(renderAllBtn);
+    await waitFor(() => {
+      expect(screen.getByText(/Kumpir/i)).toBeInTheDocument();
+      expect(screen.queryByText(/747/i)).toBeInTheDocument();
+    });
   });
 
   it('Testa se os cards de comida e bebida são renderizados corretamente', () => {
