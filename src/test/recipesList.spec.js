@@ -60,30 +60,33 @@ describe('Testa funcionamento da pagina de bebidas/comidas', () => {
   });
   it('verifica se a api retornar apenas uma receita de bebida'
   + ' sera redirecionado para tela de detalhes', async () => {
-    renderPath('/bebidas');
+    const { history } = renderPath('/bebidas');
     expect(await screen.findByText('GG')).toBeInTheDocument();
-    expect(await screen.findByTestId('recipe-title')).toBeInTheDocument();
+    const { pathname } = history.location;
+    expect(pathname).toBe('/bebidas/15997');
   });
 
   it('verifica se a api retornar apenas uma receita de comida'
   + 'receita sera redirecionado para tela de detalhes', async () => {
-    renderPath('/comidas');
+    const { history } = renderPath('/comidas');
     expect(await screen.findByText('Corba')).toBeInTheDocument();
-    expect(await screen.findByTestId('recipe-title')).toBeInTheDocument();
+    const { pathname } = history.location;
+    expect(pathname).toBe('/comidas/52977');
   });
 });
 
+const mocksPrincipal = () => {
+  jest.spyOn(ApiFuncs, 'recipesApiList')
+    .mockImplementation(() => Promise.resolve(dataMock));
+  jest.spyOn(ApiFuncs, 'categoryRecipesApi')
+    .mockImplementation(() => Promise.resolve(categoryApi));
+  jest.spyOn(ApiFuncs, 'recipesByCategoryApi')
+    .mockImplementation(() => Promise.resolve(RecipesDrinksCocktail));
+};
+
 describe('Verifica funcionamento dos botões de filtro por'
 + 'categoria na tela principal', () => {
-  beforeEach(() => {
-    jest.spyOn(ApiFuncs, 'recipesApiList')
-      .mockImplementation(() => Promise.resolve(dataMock));
-    jest.spyOn(ApiFuncs, 'categoryRecipesApi')
-      .mockImplementation(() => Promise.resolve(categoryApi));
-    jest.spyOn(ApiFuncs, 'recipesByCategoryApi')
-      .mockImplementation(() => Promise.resolve(RecipesDrinksCocktail));
-  });
-
+  beforeEach(mocksPrincipal);
   afterEach(cleanup);
 
   it('Verifica se a pagina esta renderizando'
@@ -112,11 +115,10 @@ describe('Verifica funcionamento dos filtros do header', () => {
       .mockImplementation(() => Promise.resolve(categoryApi));
   });
 
-  jest.spyOn(ApiFuncs, 'recipesAPI')
-    .mockImplementation(() => Promise.resolve(searchIngredientIce));
-
   it('verifica se ao pesquisar por ingrediente,'
     + 'renderiza receitas somente o ingrediente pesquisado', async () => {
+    jest.spyOn(ApiFuncs, 'recipesAPI')
+      .mockImplementation(() => Promise.resolve(searchIngredientIce));
     renderPath('/bebidas');
     openSearchBar();
     const inputSearch = await screen.findByTestId(SEARCH_INPUT);
@@ -131,11 +133,10 @@ describe('Verifica funcionamento dos filtros do header', () => {
     expect(await screen.findByText('A Piece of Ass')).toBeInTheDocument();
   });
 
-  jest.spyOn(ApiFuncs, 'recipesAPI')
-    .mockImplementation(() => Promise.resolve(searchNomeVodka));
-
   it('verifica se ao pesquisar por nome,'
   + 'renderiza apenas receitas com o nome pesquisado', async () => {
+    jest.spyOn(ApiFuncs, 'recipesAPI')
+      .mockImplementation(() => Promise.resolve(searchNomeVodka));
     renderPath('/bebidas');
     openSearchBar();
     userEvent.type(await screen.findByTestId(SEARCH_INPUT), 'vodka');
@@ -144,15 +145,41 @@ describe('Verifica funcionamento dos filtros do header', () => {
     expect(await screen.findByText('Long vodka')).toBeInTheDocument();
   });
 
-  jest.spyOn(ApiFuncs, 'recipesAPI')
-    .mockImplementation(() => Promise.resolve(searchFirstLetter));
   it('verifica se ao pesquisar pela primeira letra'
   + 'renderiza apenas receitas filtrado pela primeira letrar', async () => {
+    jest.spyOn(ApiFuncs, 'recipesAPI')
+      .mockImplementation(() => Promise.resolve(searchFirstLetter));
     renderPath('/bebidas');
     openSearchBar();
     userEvent.type(await screen.findByTestId(SEARCH_INPUT), 'a');
     userEvent.click(await screen.findByLabelText(/primeira letra/i));
     userEvent.click(await screen.findByTestId(EXEC_SEARCH_BTN));
     expect(await screen.findByText('A1')).toBeInTheDocument();
+  });
+});
+
+describe('Verifica erros ao utilizar os filtros do header', () => {
+  beforeEach(mocksPrincipal);
+  it('verifica se ao pesquisar pelo filtro "primeira letra" com mais de uma letra'
+  + ' renderiza na tela "Sua busca deve conter somente 1 (um) caracter"', async () => {
+    const alert = jest.spyOn(global, 'alert').mockImplementation();
+    renderPath('/bebidas');
+    openSearchBar();
+    userEvent.type(await screen.findByTestId(SEARCH_INPUT), 'aB');
+    userEvent.click(await screen.findByLabelText(/primeira letra/i));
+    userEvent.click(await screen.findByTestId(EXEC_SEARCH_BTN));
+    expect(alert)
+      .toHaveBeenCalledWith('Sua busca deve conter somente 1 (um) caracter');
+  });
+
+  it('verifica se ao pesquisar uma receita que nao existe renderiza um alert'
+    + ' "Sinto muito, não encontramos nenhuma receita para esses filtros."', async () => {
+    const alert = jest.spyOn(global, 'alert').mockImplementation();
+    renderPath('/bebidas');
+    openSearchBar();
+    userEvent.type(await screen.findByTestId(SEARCH_INPUT), 'shake ovomaltine');
+    userEvent.click(await screen.findByLabelText(/nome/i));
+    userEvent.click(await screen.findByTestId(EXEC_SEARCH_BTN));
+    expect(alert).toHaveBeenCalled();
   });
 });
