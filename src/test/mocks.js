@@ -1,4 +1,5 @@
 const imgA1 = 'https://www.thecocktaildb.com/images/media/drink/2x8thr1504816928.jpg';
+
 export const recipesApiMock = {
   drinks: [
     {

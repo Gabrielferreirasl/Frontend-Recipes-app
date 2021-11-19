@@ -1,0 +1,57 @@
+import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { waitFor } from '@testing-library/dom';
+import * as APIfuncs from '../services/recipesAPI';
+import renderPath from '../helpers/renderPath';
+import 'mutationobserver-shim';
+
+const recipeRandom = [
+  {
+    idMeal: '52938',
+    strMeal: 'Jamaican Beef Patties',
+    strInstructions: 'beeffff',
+    strMealThumb: 'https://www.themealdb.com/images/media/meals/wsqqsw1515364068.jpg',
+    strTags: 'Snack,Spicy',
+    strYoutube: 'https://www.youtube.com/watch?v=ypQjoiZiTac',
+    strIngredient1: 'Plain Flour',
+    strIngredient2: 'Salt',
+    strMeasure1: '4 cups ',
+    strMeasure2: '1 tsp ',
+    strSource: 'https://www.thespruce.com/jamaican-beef-patties-recipe-2137762',
+  },
+];
+
+jest.spyOn(APIfuncs, 'getRandomRecipe')
+  .mockImplementation(() => Promise.resolve(recipeRandom));
+
+describe('verifica se os botões estão redirecionando para tela correta', () => {
+  it('verifica se o botão "por ingrediente" redireciona para rota '
+    + '"/explorar/comidas/ingredientes"', () => {
+    const { history } = renderPath('/explorar/comidas');
+
+    const byIngredientBtn = screen.getByTestId('explore-by-ingredient');
+
+    userEvent.click(byIngredientBtn);
+    const { pathname } = history.location;
+    expect(pathname).toBe('/explorar/comidas/ingredientes');
+  });
+  it('verifica se o botão "por local de origem" redireciona para rota'
+   + ' "/explorar/comidas/area"', () => {
+    const { history } = renderPath('/explorar/comidas');
+
+    const byAreaBtn = screen.getByTestId('explore-by-area');
+
+    userEvent.click(byAreaBtn);
+    const { pathname } = history.location;
+    expect(pathname).toBe('/explorar/comidas/area');
+  });
+  it('verifica se o botão "Me Surprenda" redireciona para tela de detalhes'
+    + ' de uma receita aleatoria', async () => {
+    const { history } = renderPath('/explorar/comidas');
+
+    const randomBtn = screen.getByTestId('explore-surprise');
+
+    userEvent.click(randomBtn);
+    await waitFor(() => expect(history.location.pathname).toBe('/comidas/52938'));
+  });
+});
