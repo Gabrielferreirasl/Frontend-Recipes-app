@@ -31,4 +31,13 @@ describe('1- Verifica se o email correto aparece na tela', () => {
     const loginTitle = screen.getByText('Login');
     expect(loginTitle).toBeInTheDocument();
   });
+  test('1.4- verifica se o localStorage fica vazio ao de Sair', () => {
+    const { history } = renderPath('/perfil');
+    userEvent.click(screen.getByTestId('profile-logout-btn'));
+    expect(history.location.pathname).toBe('/');
+    expect(localStorage.getItem('user')).toBe(null);
+    history.push('/perfil');
+    const EMAIL_USER = screen.getByTestId('profile-email');
+    expect(EMAIL_USER.value).toBe(undefined);
+  });
 });
