@@ -85,7 +85,7 @@ const mocksPrincipal = () => {
 };
 
 describe('Verifica funcionamento dos botões de filtro por'
-+ 'categoria na tela principal', () => {
++ ' categoria na tela principal', () => {
   beforeEach(mocksPrincipal);
   afterEach(cleanup);
 
