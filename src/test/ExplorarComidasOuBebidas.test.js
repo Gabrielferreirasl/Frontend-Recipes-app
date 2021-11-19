@@ -24,10 +24,12 @@ const recipeRandom = [
 jest.spyOn(APIfuncs, 'getRandomRecipe')
   .mockImplementation(() => Promise.resolve(recipeRandom));
 
+const ROUTE_EXPLORAR_COMIDAS = '/explorar/comidas';
+
 describe('verifica se os botões estão redirecionando para tela correta', () => {
   it('verifica se o botão "por ingrediente" redireciona para rota '
     + '"/explorar/comidas/ingredientes"', () => {
-    const { history } = renderPath('/explorar/comidas');
+    const { history } = renderPath(ROUTE_EXPLORAR_COMIDAS);
 
     const byIngredientBtn = screen.getByTestId('explore-by-ingredient');
 
@@ -37,7 +39,7 @@ describe('verifica se os botões estão redirecionando para tela correta', () =>
   });
   it('verifica se o botão "por local de origem" redireciona para rota'
    + ' "/explorar/comidas/area"', () => {
-    const { history } = renderPath('/explorar/comidas');
+    const { history } = renderPath(ROUTE_EXPLORAR_COMIDAS);
 
     const byAreaBtn = screen.getByTestId('explore-by-area');
 
@@ -47,7 +49,7 @@ describe('verifica se os botões estão redirecionando para tela correta', () =>
   });
   it('verifica se o botão "Me Surprenda" redireciona para tela de detalhes'
     + ' de uma receita aleatoria', async () => {
-    const { history } = renderPath('/explorar/comidas');
+    const { history } = renderPath(ROUTE_EXPLORAR_COMIDAS);
 
     const randomBtn = screen.getByTestId('explore-surprise');
 
