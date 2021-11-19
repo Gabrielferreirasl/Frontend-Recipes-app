@@ -10,18 +10,18 @@ main {
   justify-content: space-evenly;
 }
 
-.container-buttons>button {
-  background-color: #E4E4E4;
-  border-radius: 10px;
+.container-buttons > button {
+  background-color: #e4e4e4;
   border: none;
+  border-radius: 10px;
   cursor: pointer;
   outline: inherit;
   padding: 0;
   width: 30%;
 }
 
-.container-buttons>button:hover {
-  background-color: #EF3E36;
+.container-buttons > button:hover {
+  background-color: #ef3e36;
   color: aliceblue;
   transition: 500ms;
 }
@@ -41,14 +41,14 @@ main {
   width: 150px;
 }
 
-.card-recipe-principal>img {
+.card-recipe-principal > img {
   border-radius: 10px;
   height: 130px;
   margin: 0;
   width: 100%;
 }
 
-.card-recipe-principal>h4 {
+.card-recipe-principal > h4 {
   align-items: end;
   background: linear-gradient(360deg, rgba(0, 0, 0, 0.6) 41.28%, rgba(0, 0, 0, 0) 56.42%);
   border-radius: 10px;
