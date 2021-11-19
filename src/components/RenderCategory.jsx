@@ -58,17 +58,18 @@ function RenderCategory() {
 
   return (
     <section>
-      <button
-        data-testid="All-category-filter"
-        onClick={ onClickAll }
-        type="button"
-      >
-        All
-      </button>
-      {
-        categoryRecipes[keyToCategory].length > 0 && categoryRecipes[keyToCategory]
-          .map(({ strCategory }, index) => (
-            index <= NUMBER_FOUR
+      <div className="container-buttons">
+        <button
+          data-testid="All-category-filter"
+          onClick={ onClickAll }
+          type="button"
+        >
+          All
+        </button>
+        {
+          categoryRecipes[keyToCategory].length > 0 && categoryRecipes[keyToCategory]
+            .map(({ strCategory }, index) => (
+              index <= NUMBER_FOUR
               && (
                 <button
                   key={ strCategory }
@@ -80,7 +81,9 @@ function RenderCategory() {
                   {strCategory}
                 </button>
               )))
-      }
+        }
+
+      </div>
     </section>
   );
 }

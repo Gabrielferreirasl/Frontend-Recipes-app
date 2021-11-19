@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
+import '../style/telaPrincipal.css';
 import RenderCategory from '../components/RenderCategory';
 import RenderRecipes from '../components/RenderRecipes';
 import RecipesContext from '../context/RecipesContext';
