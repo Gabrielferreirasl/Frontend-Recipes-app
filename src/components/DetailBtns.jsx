@@ -1,5 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router';
+import '../style/details.css';
 
 function DetailsBtns() {
   const history = useHistory();
@@ -23,11 +24,11 @@ function DetailsBtns() {
   };
 
   return (
-    <div>
+    <div className="">
       { verifyRecipe() && (verifyProgress() ? (
         <button
           data-testid="start-recipe-btn"
-          className="start-recipe-btn"
+          className="start-recipe-btn btn-block btn-lg mx-auto"
           type="button"
           onClick={ () => history.push(`${history.location.pathname}/in-progress`) }
         >
@@ -35,7 +36,7 @@ function DetailsBtns() {
         </button>
       ) : (
         <button
-          className="start-recipe-btn"
+          className="start-recipe-btn  btn-block btn-lg mx-auto"
           data-testid="start-recipe-btn"
           type="button"
           onClick={ () => history.push(`${history.location.pathname}/in-progress`) }

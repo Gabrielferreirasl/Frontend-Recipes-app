@@ -5,6 +5,7 @@ import { checkIsFavorite, saveFavorite } from '../helpers';
 import shareIcon from '../images/shareIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
+import '../style/details.css';
 
 function DetailsHeader({ recipe }) {
   const location = useLocation();
@@ -34,31 +35,38 @@ function DetailsHeader({ recipe }) {
         src={ recipe[`str${infoRecipe.keyType}Thumb`] }
         alt="recipe"
       />
-      <div>
-        <h4 data-testid="recipe-title">{recipe[`str${infoRecipe.keyType}`]}</h4>
-        <button
-          onClick={ (ev) => handleShareAndFav(ev) }
-          type="button"
-          data-testid="share-btn"
-        >
-          <img src={ shareIcon } alt="shareIcon" />
-        </button>
-        {infoRecipe.copied && <p data-testid="copiado">Link copiado!</p>}
-        <button
-          value="fav"
-          onClick={ (ev) => handleShareAndFav(ev) }
-          type="button"
-        >
-          <img
-            data-testid="favorite-btn"
-            src={ infoRecipe.isFavorite ? blackHeartIcon : whiteHeartIcon }
-            alt="fav"
-          />
-        </button>
-        <p data-testid="recipe-category">
-          {infoRecipe.keyType === 'Drink' ? recipe.strAlcoholic : recipe.strCategory}
-        </p>
+      <div className="card-info">
+        <div className="title">
+          <h4 data-testid="recipe-title">{recipe[`str${infoRecipe.keyType}`]}</h4>
+          <img src="https://img.icons8.com/ios-filled/50/000000/meal.png" alt="icon" />
+        </div>
+        <section className="btns">
+          <button
+            className="share-fav"
+            onClick={ (ev) => handleShareAndFav(ev) }
+            type="button"
+            data-testid="share-btn"
+          >
+            <img src={ shareIcon } alt="shareIcon" />
+          </button>
+          <button
+            className="share-fav"
+            value="fav"
+            onClick={ (ev) => handleShareAndFav(ev) }
+            type="button"
+          >
+            <img
+              data-testid="favorite-btn"
+              src={ infoRecipe.isFavorite ? blackHeartIcon : whiteHeartIcon }
+              alt="fav"
+            />
+          </button>
+        </section>
       </div>
+      <p className="category" data-testid="recipe-category">
+        {infoRecipe.keyType === 'Drink' ? recipe.strAlcoholic : recipe.strCategory}
+      </p>
+      {infoRecipe.copied && <p className="copiado">Link copiado!</p>}
     </>
   );
 }
