@@ -15,5 +15,4 @@ const renderWithRouter = (component) => { // função helper para testar routes 
     history,
   });
 };
-
 export default renderWithRouter;

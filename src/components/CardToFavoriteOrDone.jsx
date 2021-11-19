@@ -88,7 +88,7 @@ function CardToFavoriteOrDone({ item, index, favoriteOrMade, removeFavorite }) {
   );
 }
 
-CardToFavoriteOrDone.defaultProps = { removeFavorite: () => null };
+CardToFavoriteOrDone.defaultProps = { removeFavorite: '' };
 
 CardToFavoriteOrDone.propTypes = {
   favoriteOrMade: PropTypes.string.isRequired,
