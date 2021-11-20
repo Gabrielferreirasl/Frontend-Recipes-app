@@ -1,4 +1,4 @@
-main {
+body {
   background-color: #303030;
 }
 
@@ -30,7 +30,6 @@ main {
   align-content: space-around;
   display: flex;
   flex-flow: row wrap;
-  height: 910px;
   justify-content: space-evenly;
   padding-bottom: 50px;
   width: 100%;
@@ -39,6 +38,7 @@ main {
 .card-recipe-principal {
   background-color: black;
   width: 150px;
+  margin-bottom: 12px
 }
 
 .card-recipe-principal > img {
@@ -49,7 +49,7 @@ main {
 }
 
 .card-recipe-principal > h4 {
-  align-items: end;
+  align-items: flex-end;
   background: linear-gradient(360deg, rgba(0, 0, 0, 0.6) 41.28%, rgba(0, 0, 0, 0) 56.42%);
   border-radius: 10px;
   color: white;
@@ -59,4 +59,5 @@ main {
   justify-content: center;
   position: absolute;
   width: 150px;
+  padding: 5px;
 }

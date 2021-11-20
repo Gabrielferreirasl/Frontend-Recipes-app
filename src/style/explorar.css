@@ -1,0 +1,31 @@
+.container-explorar {
+  display: flex;
+  justify-content: space-around;
+}
+
+.container-explorar > button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  outline: inherit;
+  padding: 0;
+  width: 40%;
+  height: 107px;
+  color: white;
+  font-size: 16px;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+.container-explorar > button:nth-child(1) {
+  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2)), url(../images/explorar-comida.jpg);
+  background-size: 145px;
+}
+
+.container-explorar > button:nth-child(2) {
+  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2)), url(../images/explorar-bebidas.jpg);
+  background-size: 145px;
+}
