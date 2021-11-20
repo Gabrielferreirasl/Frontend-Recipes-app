@@ -29,3 +29,36 @@
   background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2)), url(../images/explorar-bebidas.jpg);
   background-size: 145px;
 }
+
+.container-btn-comidas-bebidas {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 320px;
+}
+
+.container-btn-comidas-bebidas > button {
+  background-color: transparent;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  outline: inherit;
+  padding: 0;
+  width: 50%;
+  height: 120px;
+}
+
+#btn-ingredientes {
+  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2)), url(../images/explorar-ingredient.jpg);
+  background-size: 145px;
+}
+
+.container-btn-random {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+}

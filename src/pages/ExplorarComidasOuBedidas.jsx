@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import Footer from '../components/Footer';
+import '../style/explorar.css';
 import profileIcon from '../images/profileIcon.svg';
 import { getRandomRecipe } from '../services/recipesAPI';
 
@@ -23,8 +24,11 @@ function ExplorarComidasOuBedidas() {
           <img data-testid="profile-top-btn" src={ profileIcon } alt="profileIcon" />
         </Link>
         <h2 data-testid="page-title">{`Explorar ${type}`}</h2>
-        <main>
+      </header>
+      <main>
+        <div className="container-btn-comidas-bebidas">
           <button
+            id="btn-ingredientes"
             type="button"
             data-testid="explore-by-ingredient"
             onClick={ () => (history.push(
@@ -43,6 +47,8 @@ function ExplorarComidasOuBedidas() {
                Por Local de Origem
              </button>
            )}
+        </div>
+        <div className="container-btn-random">
           <button
             type="button"
             data-testid="explore-surprise"
@@ -50,8 +56,8 @@ function ExplorarComidasOuBedidas() {
           >
             Me Surpreenda!
           </button>
-        </main>
-      </header>
+        </div>
+      </main>
       <Footer />
     </>
   );
