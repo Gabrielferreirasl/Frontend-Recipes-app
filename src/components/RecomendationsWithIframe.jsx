@@ -19,10 +19,9 @@ function RecomendationsWithIframe({ recipe }) {
 
   return (
     <>
-      <div>
+      <div className="iframe">
         { recomendationType === 'Drink' && recipe.strYoutube
          && <iframe
-           className="iframe"
            data-testid="video"
            src={ `https://www.youtube.com/embed/${recipe.strYoutube.split('=')[1]}` }
            frameBorder="0"
