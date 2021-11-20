@@ -1,0 +1,33 @@
+body {
+  height: 100%;
+}
+
+.perfil-content {
+  background-color: #303030;
+  height: 640px;
+}
+
+.title-profile {
+  color: white;
+  margin-top: 25%;
+  text-align: center;
+}
+
+.header-profile {
+  background-color: #ef3e36;
+  height: 9.5%;
+  text-align: center;
+}
+
+.img-profile {
+  align-items: left;
+  display: inline;
+  justify-content: flex-end;
+  margin-right: 20px;
+}
+
+.title-pro {
+  display: inline-flex;
+  justify-content: center;
+}
+
