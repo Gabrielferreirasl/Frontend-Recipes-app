@@ -10,7 +10,7 @@ function CardsRecipes({ items, maxItems }) {
   const url = keyIdToRender === 'idMeal' ? 'comidas' : 'bebidas';
 
   return (
-    <main>
+    <div className="container-recipes-principal">
       {
         items.map((item, index) => (
           index <= NUMBER_ELEVEN && (
@@ -20,6 +20,7 @@ function CardsRecipes({ items, maxItems }) {
               to={ `/${url}/${item[keyIdToRender]}` }
             >
               <div
+                className="card-recipe-principal"
                 data-testid={ `${index}-recipe-card` }
               >
                 <h4 data-testid={ `${index}-card-name` }>{item[keyNameToRender]}</h4>
@@ -33,7 +34,7 @@ function CardsRecipes({ items, maxItems }) {
           )
         ))
       }
-    </main>
+    </div>
   );
 }
 

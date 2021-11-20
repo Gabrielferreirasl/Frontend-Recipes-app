@@ -1,11 +1,13 @@
 * {
+  background-color: #303030;
   max-width: 360px;
 }
 
 .recomendation {
   display: flex;
   flex-direction: row;
-  overflow: scroll;
+  margin-bottom: 30px;
+  overflow-x: scroll;
 }
 
 .recipe-img {
@@ -16,7 +18,135 @@
   height: 150px;
 }
 
+.recomendation-name {
+  font-family: monospace;
+  font-size: x-large;
+  text-align: center;
+}
+
 .start-recipe-btn {
+  background-color: #ef3e36;
+  border-radius: 4px;
+  border-style: none;
   bottom: 0;
+  color: white;
   position: fixed;
+}
+
+.start-recipe-btn:hover {
+  background-color: #fd1509;
+}
+
+.recomendation-category {
+  font-size: small;
+  padding: 5px;
+  text-align: center;
+}
+
+h3 {
+  color: #e4e4e4;
+  font-size: xx-large;
+  margin-left: 5px;
+}
+
+.div-recomendations h3 {
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.div-details-btn {
+  display: flex;
+  justify-content: center;
+}
+
+.card-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+}
+
+.share-fav {
+  background-color: #303030;
+  border: none;
+  padding: 5px;
+}
+
+h4 {
+  color: #e4e4e4;
+  font-family: sans-serif;
+  font-size: 35px;
+}
+
+.category {
+  font-size: large;
+  margin-left: 20px;
+}
+
+p {
+  color: #e4e4e4;
+  font-family: sans-serif;
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 30px;
+}
+
+.title img {
+  height: 30px;
+  margin-left: 10px;
+  margin-right: 70px;
+}
+
+.copiado {
+  padding: 15px;
+}
+
+.title-ingredient {
+  display: flex;
+  height: 60px;
+  padding: 10px;
+}
+
+.title-ingredient img {
+  margin-left: 10px;
+}
+
+.ingredients {
+  border-radius: 25px;
+  margin-left: 5px;
+  padding: 10px;
+}
+
+.ingredients p {
+  color: #3da35d;
+  font-family: monospace;
+}
+
+.instructions {
+  margin-left: 15px;
+}
+
+.instructions h3 {
+  margin-bottom: 12px;
+}
+
+.instructions p {
+  color: #3da35d;
+  font-family: Courier , Helvetica , Arial , sans-serif;
+}
+
+.iframe {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.iframe iframe {
+  top: 0;
 }
