@@ -38,7 +38,11 @@ function DetailsHeader({ recipe }) {
       <div className="card-info">
         <div className="title">
           <h4 data-testid="recipe-title">{recipe[`str${infoRecipe.keyType}`]}</h4>
-          <img src="https://img.icons8.com/ios-filled/50/000000/meal.png" alt="icon" />
+          <img
+            src={ infoRecipe.keyType === 'Meal' ? 'https://img.icons8.com/ios-filled/50/000000/meal.png'
+              : 'https://img.icons8.com/ios-filled/50/000000/cocktail.png' }
+            alt="icon"
+          />
         </div>
         <section className="btns">
           <button
