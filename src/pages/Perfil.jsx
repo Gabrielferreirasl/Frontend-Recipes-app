@@ -12,13 +12,21 @@ function Perfil({ history }) {
   };
 
   return (
-    <main>
+    <main
+      style={ { backgroundColor: '#303030',
+        backgroundSize: 'cover' } }
+    >
       <header>
         <img data-testid="profile-top-btn" src={ profileIcon } alt="profileIcon" />
         <h2 data-testid="page-title">Perfil</h2>
       </header>
       <div>
-        <h3 data-testid="profile-email">{ emailUser ? emailUser.email : '' }</h3>
+        <h3
+          data-testid="profile-email"
+          style={ { color: 'white' } }
+        >
+          { emailUser ? emailUser.email : '' }
+        </h3>
         <button
           className="btn-entrar btn-block btn-lg mx-auto"
           type="button"
