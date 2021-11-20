@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@sheerun/mutationobserver-shim": "^0.3.3",
+    "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.21.1",
@@ -11,6 +12,7 @@
     "clipboard-copy": "^3.1.0",
     "history": "^4.7.2",
     "lodash": "^4.17.15",
+    "mutationobserver-shim": "^0.3.7",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-bootstrap": "^1.4.0",
@@ -60,7 +62,6 @@
     "mochawesome": "^6.1.1",
     "mochawesome-merge": "^4.1.0",
     "mochawesome-report-generator": "^5.1.0",
-    "mutationobserver-shim": "^0.3.7",
     "stylelint": "^13.8.0",
     "stylelint-order": "^4.1.0"
   },
