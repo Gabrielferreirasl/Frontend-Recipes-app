@@ -4,7 +4,6 @@ import DetailsHeader from '../components/DetailsHeader';
 import { checkProgress, finishRecipe } from '../helpers';
 import { getRecipeById } from '../services/recipesAPI';
 import '../style/Progress.css';
-import '../style/checkboxStyle.css';
 
 function InProgress() {
   const [recipe, setRecipe] = useState({});
