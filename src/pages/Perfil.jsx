@@ -20,6 +20,7 @@ function Perfil({ history }) {
       <div>
         <h3 data-testid="profile-email">{ emailUser ? emailUser.email : '' }</h3>
         <button
+          className="btn-entrar btn-block btn-lg mx-auto"
           type="button"
           data-testid="profile-done-btn"
           onClick={ () => history.push('/receitas-feitas') }
@@ -27,6 +28,7 @@ function Perfil({ history }) {
           Receitas Feitas
         </button>
         <button
+          className="btn-entrar btn-block btn-lg mx-auto"
           type="button"
           data-testid="profile-favorite-btn"
           onClick={ () => history.push('/receitas-favoritas') }
@@ -34,7 +36,12 @@ function Perfil({ history }) {
           Receitas Favoritas
         </button>
 
-        <button type="button" data-testid="profile-logout-btn" onClick={ handleClick }>
+        <button
+          className="btn-entrar btn-block btn-lg mx-auto"
+          type="button"
+          data-testid="profile-logout-btn"
+          onClick={ handleClick }
+        >
           Sair
         </button>
       </div>
