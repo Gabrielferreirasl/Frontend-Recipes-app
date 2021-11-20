@@ -5,7 +5,6 @@ import recipeByIdComida from '../mocks/recipeByIdComida';
 import DrinksRecomendation from '../mocks/DrinksRecomendation';
 import * as APIfuncs from '../services/recipesAPI';
 import renderPath from '../helpers/renderPath';
-// eslint-disable-next-line import/no-unresolved
 import 'mutationobserver-shim';
 
 const getRecipeByIdMock = jest.spyOn(APIfuncs, 'getRecipeById')

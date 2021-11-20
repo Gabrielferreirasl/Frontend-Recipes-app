@@ -12,6 +12,7 @@
     "clipboard-copy": "^3.1.0",
     "history": "^4.7.2",
     "lodash": "^4.17.15",
+    "mutationobserver-shim": "^0.3.7",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-bootstrap": "^1.4.0",
