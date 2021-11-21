@@ -6,7 +6,7 @@ import { getRecipeById } from '../services/recipesAPI';
 import '../style/Progress.css';
 
 function InProgress() {
-  const [recipe, setRecipe] = useState({});
+  const [recipe, setRecipe] = useState(null);
   const [recipeSteps, setRecipeSteps] = useState(null);
   const location = useLocation();
   const history = useHistory();
@@ -20,18 +20,20 @@ function InProgress() {
   }, [keyObj, location]);
 
   useEffect(() => {
-    const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
-    const stepKeys = Object.keys(recipe).filter((key) => (
-      key.includes('strIngredient') && recipe[key] !== ''
+    if (recipe) {
+      const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
+      const stepKeys = Object.keys(recipe).filter((key) => (
+        key.includes('strIngredient') && recipe[key] !== ''
        && recipe[key] !== null));
-    const obj = {};
-    stepKeys.map((step) => {
-      obj[step] = inProgressRecipes
+      const obj = {};
+      stepKeys.map((step) => {
+        obj[step] = inProgressRecipes
       && Object.keys(inProgressRecipes[keyObj]).some((i) => i === id)
-        ? inProgressRecipes[keyObj][id].some((item) => item === step) : false;
-      return step;
-    });
-    setRecipeSteps(obj);
+          ? inProgressRecipes[keyObj][id].some((item) => item === step) : false;
+        return step;
+      });
+      setRecipeSteps(obj);
+    }
   }, [id, keyObj, location.pathname, recipe]);
 
   const updateStepsState = ({ target: { name } }) => {
@@ -41,7 +43,7 @@ function InProgress() {
 
   return (
     <main>
-      {recipeSteps && (
+      {recipe && recipeSteps && (
         <>
           <DetailsHeader recipe={ recipe } />
           <div className="ingredients">
