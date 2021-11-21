@@ -9,6 +9,7 @@ function ExplorarIngredientes() {
   const history = useHistory();
   const [ingredients, setIngredients] = useState(null);
   const { setArrayRecipes } = useContext(RecipesContext);
+  const ELEVEN = 11;
 
   const urlType = history.location.pathname.includes('bebidas')
     ? 'thecocktaildb' : 'themealdb';
@@ -36,18 +37,34 @@ function ExplorarIngredientes() {
         </Link>
         <h2 data-testid="page-title">Explorar Ingredientes</h2>
       </header>
-      {ingredients && ingredients.map((item, index) => (
-        <button key={ index } type="button" onClick={ () => handleClick(item) }>
-          <div data-testid={ `${index}-ingredient-card` }>
-            <img
-              src={ ingredientImg(item) }
-              alt="ingredient"
-              data-testid={ `${index}-card-img` }
+      <div className="container-ingredients">
+        {ingredients && ingredients.map((item, index) => (
+          <div
+            className="container-btn-ingredient"
+            key={ index }
+            data-testid={ `${index}-ingredient-card` }
+          >
+            <button
+              key={ index }
+              type="button"
+              onClick={ () => handleClick(item) }
+              className="btn-floating"
+            >
+              <img
+                src={ ingredientImg(item) }
+                alt="ingredient"
+                data-testid={ `${index}-card-img` }
+              />
+            </button>
+
+            <div
+              className="container-cardname"
             />
-            <h4 data-testid={ `${index}-card-name` }>{item[key]}</h4>
+            <h4 data-testid={ `${index}-card-name` }>{item[key].substr(0, ELEVEN)}</h4>
           </div>
-        </button>
-      ))}
+        ))}
+      </div>
+
       <Footer />
     </main>
   );

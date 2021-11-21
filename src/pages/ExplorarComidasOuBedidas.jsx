@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import Footer from '../components/Footer';
 import '../style/explorar.css';
+import iconRandom from '../images/icon-rando.png';
 import profileIcon from '../images/profileIcon.svg';
 import { getRandomRecipe } from '../services/recipesAPI';
 
@@ -40,6 +41,7 @@ function ExplorarComidasOuBedidas() {
           { type === 'Comidas'
            && (
              <button
+               id="btn-local"
                type="button"
                data-testid="explore-by-area"
                onClick={ () => history.push('/explorar/comidas/area') }
@@ -54,6 +56,7 @@ function ExplorarComidasOuBedidas() {
             data-testid="explore-surprise"
             onClick={ () => handleExplore() }
           >
+            <img src={ iconRandom } alt="icone aleatorio" />
             Me Surpreenda!
           </button>
         </div>
