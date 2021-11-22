@@ -4,6 +4,7 @@ import { favoriteOrDisfavorite, getLocalStorage, updateRecipes } from '../helper
 import FiltersByType from '../components/FiltersByType';
 import CardToFavoriteOrDone from '../components/CardToFavoriteOrDone';
 import profileIcon from '../images/profileIcon.svg';
+import '../style/doneAndFavorite.css';
 
 function ReceitasFavoritas() {
   const [recipesFavorited, setRecipesFavorited] = useState([]);
