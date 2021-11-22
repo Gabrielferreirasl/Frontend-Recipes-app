@@ -25,7 +25,7 @@ function Details() {
         <h3>Ingredients</h3>
         {ingredientKeys().map((key, indice) => (
           <p data-testid={ `${indice}-ingredient-name-and-measure` } key={ indice }>
-            {`${recipe[key]} ${recipe[`strMeasure${indice + 1}`]}`}
+            {`${recipe[key]} - ${recipe[`strMeasure${indice + 1}`]}`}
           </p>))}
       </div>
       <div>

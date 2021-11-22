@@ -1,0 +1,39 @@
+.login-group {
+  margin-top: 45%;
+}
+
+.btn-entrar {
+  background-color: #ef3e36;
+  border-radius: 7px;
+  color: white;
+  margin-top: 20%;
+  max-width: 75%;
+  opacity: 1;
+}
+
+.pass {
+  background: #303030;
+  margin: 10px;
+  max-width: 80%;
+  padding: 20px;
+}
+
+.email {
+  background: #303030;
+  margin: 10px;
+  max-width: 80%;
+  padding: 20px;
+}
+
+.title-login {
+  margin-top: 25%;
+}
+
+body {
+  background: url('../images/flat-lay-brazilian-food-with-copy-space.jpg') fixed no-repeat;
+  background-size: 100% 100%;
+}
+
+input {
+  max-width: 70%;
+}
