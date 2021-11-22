@@ -35,7 +35,9 @@ function ExplorarIngredientes() {
         <Link to="/perfil">
           <img data-testid="profile-top-btn" src={ profileIcon } alt="profileIcon" />
         </Link>
-        <h2 data-testid="page-title">Explorar Ingredientes</h2>
+        <div className="container-title-header">
+          <h2 data-testid="page-title">Explorar Ingredientes</h2>
+        </div>
       </header>
       <div className="container-ingredients">
         {ingredients && ingredients.map((item, index) => (
@@ -59,8 +61,9 @@ function ExplorarIngredientes() {
 
             <div
               className="container-cardname"
-            />
-            <h4 data-testid={ `${index}-card-name` }>{item[key].substr(0, ELEVEN)}</h4>
+            >
+              <h4 data-testid={ `${index}-card-name` }>{item[key].substr(0, ELEVEN)}</h4>
+            </div>
           </div>
         ))}
       </div>

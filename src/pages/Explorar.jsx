@@ -13,7 +13,9 @@ function Explorar() {
         <Link to="/perfil">
           <img data-testid="profile-top-btn" src={ profileIcon } alt="profileIcon" />
         </Link>
-        <h2 data-testid="page-title">Explorar</h2>
+        <div className="container-title-header">
+          <h2 data-testid="page-title">Explorar</h2>
+        </div>
       </header>
       <div className="container-explorar">
         <button

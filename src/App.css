@@ -1,8 +1,9 @@
 .container-header-search {
+  padding: 0;
   background-color: #ef3e36;
   display: flex;
-  height: 50px;
-  justify-content: space-evenly;
+  flex-flow: row wrap;
+  justify-content: space-between;
   margin: 0;
   padding: 10px;
   width: 100%;
@@ -26,17 +27,24 @@ header h2 {
   background-color: #ef3e36;
   display: flex;
   height: 50px;
-  justify-content: space-around;
+  justify-content: space-between;
   margin: 0;
   padding: 10px;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.container-title-header {
+  display: flex;
+  justify-content: center;
+  margin-right: 20px;
   width: 100%;
 }
 
 .container-nosearch h2 {
   align-content: center;
-  align-self: center;
+  align-self: flex-start;
   margin-bottom: 0;
-  margin-right: 82px;
 }
 
 header img {
@@ -80,6 +88,25 @@ header img {
   font-family: Montserrat , sans-serif;
   font-size: 3em;
   font-weight: 900;
+}
+
+.container-searchbar {
+  align-items: center;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  padding-top: 10px;
+  width: 100%;
+}
+
+.container-itemsearch {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.container-itemsearch label {
+  margin: 0;
 }
 
 @keyframes shake {

@@ -41,7 +41,7 @@ function CardToFavoriteOrDone({ item, index, favoriteOrMade, removeFavorite }) {
 
         { !itemIsFavorite
         && (
-          <p data-testid={ `${index}-horizontal-done-date` }>
+          <p className="mb-0" data-testid={ `${index}-horizontal-done-date` }>
             {item.doneDate}
           </p>) }
         {copied && <p>Link copiado!</p>}

@@ -117,7 +117,7 @@ p {
 
 .ingredients {
   border-radius: 25px;
-  margin-left: 5px;
+  margin-left: 20px;
   padding: 10px;
 }
 
@@ -127,7 +127,7 @@ p {
 }
 
 .instructions {
-  margin-left: 15px;
+  margin: 0 30px;
 }
 
 .instructions h3 {
@@ -137,6 +137,7 @@ p {
 .instructions p {
   color: #3da35d;
   font-family: Courier , Helvetica , Arial , sans-serif;
+  text-align: justify;
 }
 
 .iframe {

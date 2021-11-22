@@ -18,11 +18,13 @@ function ReceitasFeitas() {
 
   return (
     <main className="main-done">
-      <header>
+      <header className="container-nosearch">
         <Link to="/perfil">
           <img data-testid="profile-top-btn" src={ profileIcon } alt="profileIcon" />
         </Link>
-        <h2 data-testid="page-title">Receitas Feitas</h2>
+        <div className="container-title-header">
+          <h2 data-testid="page-title">Receitas Feitas</h2>
+        </div>
       </header>
       <span>
         <FiltersByType filters={ filters } setState={ setFilters } />

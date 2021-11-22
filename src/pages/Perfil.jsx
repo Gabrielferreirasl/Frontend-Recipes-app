@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import profileIcon from '../images/profileIcon.svg';
 import Footer from '../components/Footer';
 import '../style/perfil.css';
@@ -16,20 +17,15 @@ function Perfil({ history }) {
     <main
       className="perfil-content"
     >
-      <header className="header-profile">
-        <img
-          data-testid="profile-top-btn"
-          src={ profileIcon }
-          alt="profileIcon"
-          className="float-start ml-3 mt-3"
-        />
-        <h2
-          className="title-pro text-center mt-3 mr-5"
-          data-testid="page-title"
-        >
-          Perfil
-        </h2>
+      <header className="container-nosearch">
+        <Link to="/perfil">
+          <img data-testid="profile-top-btn" src={ profileIcon } alt="profileIcon" />
+        </Link>
+        <div className="container-title-header">
+          <h2 data-testid="page-title">Perfil</h2>
+        </div>
       </header>
+
       <h4
         data-testid="profile-email"
         className="title-profile"

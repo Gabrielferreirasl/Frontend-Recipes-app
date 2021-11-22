@@ -40,8 +40,9 @@ function SearchBar() {
   };
 
   return (
-    <div>
+    <div className="container-searchbar">
       <input
+        className="form-control mx-auto email"
         onChange={ (ev) => handleChange(ev) }
         placeholder="Buscar Receita"
         value={ searchInfo.search }
@@ -49,7 +50,7 @@ function SearchBar() {
         name="search"
         data-testid="search-input"
       />
-      <div>
+      <div className="container-itemsearch">
         <label htmlFor="ingredient">
           Ingrediente
           <input
@@ -64,6 +65,7 @@ function SearchBar() {
         <label htmlFor="name">
           Nome
           <input
+            className="mb-3"
             onChange={ (ev) => handleChange(ev) }
             value="Nome"
             data-testid="name-search-radio"
@@ -85,6 +87,7 @@ function SearchBar() {
         </label>
       </div>
       <button
+        className="btn btn-light"
         onClick={ () => handleClickSearch() }
         type="button"
         data-testid="exec-search-btn"
