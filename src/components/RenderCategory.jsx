@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { categoryRecipesApi, recipesByCategoryApi } from '../services/recipesAPI';
 import RecipesContext from '../context/RecipesContext';
+import RenderCategorySkeleton from './screenSkeleton/RenderCategorySkeleton';
 
 function RenderCategory() {
   const history = useHistory();
@@ -16,9 +17,18 @@ function RenderCategory() {
     filters,
     setRecipesFiltred,
     recipesFiltred,
+    setArrayRecipes,
   } = useContext(RecipesContext);
 
   const handleClick = async ({ target }) => {
+    setArrayRecipes({
+      drinks: [],
+      meals: [],
+    });
+    setRecipesFiltred({
+      drinks: [],
+      meals: [],
+    });
     const { value } = target;
     const { status, filter } = filters.category;
     setFilters({
@@ -60,6 +70,7 @@ function RenderCategory() {
     <section>
       <div className="container-buttons">
         <button
+          id="btn-all"
           data-testid="All-category-filter"
           onClick={ onClickAll }
           type="button"
@@ -67,7 +78,7 @@ function RenderCategory() {
           All
         </button>
         {
-          categoryRecipes[keyToCategory].length > 0 && categoryRecipes[keyToCategory]
+          categoryRecipes[keyToCategory].length > 0 ? categoryRecipes[keyToCategory]
             .map(({ strCategory }, index) => (
               index <= NUMBER_FOUR
               && (
@@ -80,9 +91,9 @@ function RenderCategory() {
                 >
                   {strCategory}
                 </button>
-              )))
+              ))) : <RenderCategorySkeleton numberCards={ 3 } />
         }
-
+        <div className="overlay-scroll" />
       </div>
     </section>
   );

@@ -5,24 +5,45 @@ body {
 .container-buttons {
   align-items: center;
   display: flex;
-  flex-flow: row wrap;
   height: 80px;
-  justify-content: space-evenly;
+  width: 340px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
+
+.overlay-scroll {
+  position: absolute;
+  align-content: flex-end;
+  background: linear-gradient(269deg, #303030 11.28%, rgba(0, 0, 0, 0) 100%);
+  min-width: 30px;
+  height: 35px;
+  left: 310px;
 }
 
 .container-buttons > button {
-  background-color: #e4e4e4;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
+  background-color: #373737;
+  border: 1px solid #ffffff1a;
+  border-radius: 15px;
+  cursor: pointer;  
   outline: inherit;
-  padding: 0;
-  width: 30%;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  padding: 0 12px;
+  white-space: nowrap;
+  height: 35px;
+  font-size: 16px;
+  display: flex;
+  margin: 0 10px;
+}
+
+#btn-all {
+  min-width: 80px;
 }
 
 .container-buttons > button:hover {
-  background-color: #ef3e36;
-  color: aliceblue;
+  background-color: white;
+  color: black;
   transition: 500ms;
 }
 
@@ -55,9 +76,34 @@ body {
   color: white;
   display: flex;
   font-size: 14px;
+  font-weight: bold;
   height: 130px;
   justify-content: center;
   position: absolute;
   width: 150px;
   padding: 5px;
+}
+
+.skeleton-category {
+  min-width: 120px;
+}
+
+.card-recipe-skeleton {
+  animation: skeleton-loading 1.5s linear infinite alternate;
+  width: 150px;
+  height: 130px;
+  background-color: #373737;
+  margin: 10px 0;
+  border-radius: 10px;
+}
+
+@keyframes skeleton-loading {
+  from {background-color: #373737;}
+  to {background-color: #868383;}
+}
+
+@media (min-width: 370px) {
+  .container-buttons::-webkit-scrollbar {
+    display: none;
+  }
 }

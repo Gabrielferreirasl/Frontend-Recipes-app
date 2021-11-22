@@ -148,6 +148,7 @@
 
 .btn-floating:hover + .container-cardname {
   background-color: #ef3e36;
+  transition: 250ms;
 }
 
 .btn-floating > img {

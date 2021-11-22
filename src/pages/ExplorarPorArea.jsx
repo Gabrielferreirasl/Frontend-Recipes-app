@@ -6,7 +6,8 @@ import RecipesContext from '../context/RecipesContext';
 import { getAreas, getRecipesByArea, recipesApiList } from '../services/recipesAPI';
 
 function ExplorarPorArea() {
-  const { recipes: { meals }, setArrayRecipes } = useContext(RecipesContext);
+  const { recipes: { meals }, setArrayRecipes,
+    setRecipesFiltred } = useContext(RecipesContext);
   const [areas, setAreas] = useState(null);
 
   useEffect(() => {
@@ -20,13 +21,26 @@ function ExplorarPorArea() {
     setArrayRecipes((prev) => ({ ...prev, meals: recipesByArea.meals }));
   };
 
+  const onChange = (ev) => {
+    setArrayRecipes({
+      drinks: [],
+      meals: [],
+    });
+    setRecipesFiltred({
+      drinks: [],
+      meals: [],
+    });
+
+    filterByArea(ev);
+  };
+
   return (
     <main>
       <Header type="Explorar Origem" />
       <select
         data-testid="explore-by-area-dropdown"
         name="area"
-        onChange={ (ev) => filterByArea(ev) }
+        onChange={ onChange }
       >
         <option data-testid="All-option" value="all">All</option>
         {areas && areas.map(({ strArea }) => (
