@@ -52,7 +52,7 @@ function Login({ history }) {
             placeholder="Senha"
             className="form-control mx-auto  pass"
             data-testid="password-input"
-            type="text"
+            type="password"
             onChange={ (ev) => handleChange(ev) }
           />
         </div>
