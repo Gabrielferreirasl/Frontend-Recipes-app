@@ -18,9 +18,9 @@
   width: 50px;
 }
 
-header {
+.container-nosearch {
   background-color: #ef3e36;
-  display: flex !important;
+  display: flex;
   height: 50px;
   justify-content: space-evenly;
   margin: 0;

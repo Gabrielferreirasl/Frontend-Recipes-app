@@ -9,7 +9,7 @@ function Explorar() {
 
   return (
     <main>
-      <header>
+      <header className="container-nosearch">
         <Link to="/perfil">
           <img data-testid="profile-top-btn" src={ profileIcon } alt="profileIcon" />
         </Link>
