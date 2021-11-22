@@ -10,12 +10,13 @@ function FiltersByType({ setState, filters: { type } }) {
   };
 
   return (
-    <>
+    <section className="filter-type-btn">
       <button
         type="button"
         data-testid="filter-by-all-btn"
         onClick={ (ev) => handleClick(ev, setState) }
         value="all"
+        className="btn btn-light filter-btn"
       >
         All
       </button>
@@ -24,6 +25,7 @@ function FiltersByType({ setState, filters: { type } }) {
         data-testid="filter-by-food-btn"
         onClick={ (ev) => handleClick(ev, setState) }
         value="comida"
+        className="btn btn-light filter-btn"
       >
         Food
       </button>
@@ -32,10 +34,11 @@ function FiltersByType({ setState, filters: { type } }) {
         data-testid="filter-by-drink-btn"
         onClick={ (ev) => handleClick(ev, setState) }
         value="bebida"
+        className="btn btn-light filter-btn"
       >
         Drinks
       </button>
-    </>
+    </section>
   );
 }
 

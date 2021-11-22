@@ -4,6 +4,7 @@ import CardToFavoriteOrDone from '../components/CardToFavoriteOrDone';
 import FiltersByType from '../components/FiltersByType';
 import { updateRecipes } from '../helpers';
 import profileIcon from '../images/profileIcon.svg';
+import '../style/doneAndFavorite.css';
 
 function ReceitasFeitas() {
   const [doneRecipes, setDoneRecipes] = useState([]);
@@ -16,7 +17,7 @@ function ReceitasFeitas() {
   }, [filters.type]);
 
   return (
-    <main>
+    <main className="main-done">
       <header>
         <Link to="/perfil">
           <img data-testid="profile-top-btn" src={ profileIcon } alt="profileIcon" />

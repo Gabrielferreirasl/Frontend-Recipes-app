@@ -5,7 +5,7 @@ import shareIcon from '../images/shareIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 
 function CardToFavoriteOrDone({ item, index, favoriteOrMade, removeFavorite }) {
-  const itemIsFavorite = favoriteOrMade === 'favorite'; // is bool
+  const itemIsFavorite = favoriteOrMade === 'favorite';
   const [copied, setCopied] = useState(false);
   const type = item.type === 'bebida' ? 'bebidas' : 'comidas';
 
@@ -21,69 +21,73 @@ function CardToFavoriteOrDone({ item, index, favoriteOrMade, removeFavorite }) {
   };
 
   return (
-    <div>
+    <div className="div-cards">
       <Link
         to={ `/${type}/${item.id}` }
+        className="img-name-card"
       >
+        <h4 data-testid={ `${index}-horizontal-name` }>{item.name}</h4>
         <img
           src={ item.image }
           alt="Imagem da receita"
           data-testid={ `${index}-horizontal-image` }
         />
-        <p data-testid={ `${index}-horizontal-name` }>
-          {item.name}
-        </p>
       </Link>
-      <p data-testid={ `${index}-horizontal-top-text` }>
-        {type === 'comidas' ? `${item.area} - ${item.category}`
-          : `${item.alcoholicOrNot}`}
-      </p>
+      <div className="div-cards-texts">
+        <p data-testid={ `${index}-horizontal-top-text` }>
+          {type === 'comidas' ? `${item.area} - ${item.category}`
+            : `${item.alcoholicOrNot}`}
+        </p>
 
-      { !itemIsFavorite
-      && (
-        <p data-testid={ `${index}-horizontal-done-date` }>
-          {item.doneDate}
-        </p>) }
-      {copied && <p>Link copiado!</p>}
-      <button
-        onClick={ handleShare }
-        type="button"
-      >
-        <img
-          data-testid={ `${index}-horizontal-share-btn` }
-          src={ shareIcon }
-          alt="shareIcon"
-        />
-      </button>
-      {
-        itemIsFavorite
+        { !itemIsFavorite
         && (
-          <button
-            value="fav"
-            onClick={ handleCLick }
-            type="button"
-          >
-            <img
-              data-testid={ `${index}-horizontal-favorite-btn` }
-              src={ blackHeartIcon }
-              alt="fav"
-            />
-          </button>
-        )
-      }
-      {
-        !itemIsFavorite && type === 'comidas' && item.tags.length > 0
-          ? (
-            item.tags.map((tag, indexTag) => (
-              <span
-                key={ indexTag }
-                data-testid={ `${index}-${tag}-horizontal-tag` }
-              >
-                { tag }
-              </span>
-            )))
-          : null
-      }
+          <p data-testid={ `${index}-horizontal-done-date` }>
+            {item.doneDate}
+          </p>) }
+        {copied && <p>Link copiado!</p>}
+        {
+          !itemIsFavorite && type === 'comidas' && item.tags.length > 0
+            ? (
+              item.tags.map((tag, indexTag) => (
+                <span
+                  key={ indexTag }
+                  data-testid={ `${index}-${tag}-horizontal-tag` }
+                >
+                  { tag }
+                </span>
+              )))
+            : null
+        }
+        <button
+          onClick={ handleShare }
+          type="button"
+          className="share-btn"
+        >
+          <img
+            data-testid={ `${index}-horizontal-share-btn` }
+            src={ shareIcon }
+            alt="shareIcon"
+          />
+        </button>
+        {
+          itemIsFavorite
+          && (
+            <button
+              value="fav"
+              onClick={ handleCLick }
+              type="button"
+              className="fav-btn"
+            >
+              <img
+                data-testid={ `${index}-horizontal-favorite-btn` }
+                src={ blackHeartIcon }
+                alt="fav"
+              />
+            </button>
+          )
+        }
+      </div>
+
     </div>
   );
 }
