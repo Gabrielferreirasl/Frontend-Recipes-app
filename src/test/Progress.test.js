@@ -1,8 +1,10 @@
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { waitFor } from '@testing-library/dom';
 import recipeByIdComida from '../mocks/recipeByIdComida';
 import * as APIfuncs from '../services/recipesAPI';
 import renderPath from '../helpers/renderPath';
+import 'mutationobserver-shim';
 
 const getRecipeByIdMock = jest.spyOn(APIfuncs, 'getRecipeById')
   .mockImplementation(() => Promise.resolve(recipeByIdComida));
@@ -23,9 +25,10 @@ describe('Verifica a tela de "Progresso"', () => {
     ingredients.forEach(async (ing, indice) => {
       expect(await screen.getByTestId(`${indice}-ingredient-step`))
         .toBeInTheDocument();
-      const checkbox = await screen.getByRole('checkbox',
+      const checkbox = screen.getByRole('checkbox',
         { name:
-            `${recipeByIdComida[ing]} ${recipeByIdComida[`strMeasure${indice + 1}`]}` });
+            `${
+              recipeByIdComida[ing]} - ${recipeByIdComida[`strMeasure${indice + 1}`]}` });
       expect(checkbox.checked).toBeFalsy();
     });
 
@@ -42,7 +45,7 @@ describe('Verifica a tela de "Progresso"', () => {
         .toBeInTheDocument();
       const checkbox = await screen.getByRole('checkbox',
         { name:
-           `${recipeByIdComida[ing]} ${recipeByIdComida[`strMeasure${indice + 1}`]}` });
+           `${recipeByIdComida[ing]} - ${recipeByIdComida[`strMeasure${indice + 1}`]}` });
       expect(checkbox.checked).toBeFalsy();
       userEvent.click(checkbox);
       expect(checkbox.checked).toBeTruthy();
@@ -51,6 +54,6 @@ describe('Verifica a tela de "Progresso"', () => {
     expect(await screen.findByTestId(testIdFinish).disabled).toBeFalsy();
 
     userEvent.click(await screen.findByTestId(testIdFinish));
-    expect(history.location.pathname).toBe('/receitas-feitas');
+    await waitFor(() => expect(history.location.pathname).toBe('/receitas-feitas'));
   });
 });

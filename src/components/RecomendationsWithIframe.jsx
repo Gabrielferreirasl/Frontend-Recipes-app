@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
+import '../style/details.css';
 import { getRecomendations } from '../services/recipesAPI';
 
 function RecomendationsWithIframe({ recipe }) {
@@ -18,7 +19,7 @@ function RecomendationsWithIframe({ recipe }) {
 
   return (
     <>
-      <div>
+      <div className="iframe">
         { recomendationType === 'Drink' && recipe.strYoutube
          && <iframe
            data-testid="video"
@@ -29,7 +30,7 @@ function RecomendationsWithIframe({ recipe }) {
            title="video"
          />}
       </div>
-      <div>
+      <div className="div-recomendations">
         <h3>Recomendadas</h3>
         <div className="recomendation">
           {recomendations.map((rec, indice) => indice <= NUMBER_FIVE && (
@@ -37,17 +38,20 @@ function RecomendationsWithIframe({ recipe }) {
               key={ indice }
               data-testid={ `${indice}-recomendation-card` }
             >
+              <h4
+                className="recomendation-name"
+                data-testid={ `${indice}-recomendation-title` }
+              >
+                {rec[`str${recomendationType}`]}
+              </h4>
               <img
                 className="recipe-img"
                 src={ rec[`str${recomendationType}Thumb`] }
                 alt={ rec[`str${recomendationType}`] }
               />
-              <p>
+              <p className="recomendation-category">
                 {recomendationType === 'Drink' ? rec.strAlcoholic : rec.strCategory}
               </p>
-              <h3 data-testid={ `${indice}-recomendation-title` }>
-                {rec[`str${recomendationType}`]}
-              </h3>
             </div>
           ))}
         </div>
