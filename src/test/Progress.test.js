@@ -25,7 +25,8 @@ describe('Verifica a tela de "Progresso"', () => {
         .toBeInTheDocument();
       const checkbox = await screen.getByRole('checkbox',
         { name:
-            `${recipeByIdComida[ing]} ${recipeByIdComida[`strMeasure${indice + 1}`]}` });
+            `${
+              recipeByIdComida[ing]} - ${recipeByIdComida[`strMeasure${indice + 1}`]}` });
       expect(checkbox.checked).toBeFalsy();
     });
 
@@ -42,7 +43,7 @@ describe('Verifica a tela de "Progresso"', () => {
         .toBeInTheDocument();
       const checkbox = await screen.getByRole('checkbox',
         { name:
-           `${recipeByIdComida[ing]} ${recipeByIdComida[`strMeasure${indice + 1}`]}` });
+           `${recipeByIdComida[ing]} - ${recipeByIdComida[`strMeasure${indice + 1}`]}` });
       expect(checkbox.checked).toBeFalsy();
       userEvent.click(checkbox);
       expect(checkbox.checked).toBeTruthy();
