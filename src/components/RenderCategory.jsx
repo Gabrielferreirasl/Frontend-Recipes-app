@@ -70,7 +70,7 @@ function RenderCategory() {
     <section>
       <div className="container-buttons">
         <button
-          id="btn-all"
+          className="btn-all"
           data-testid="All-category-filter"
           onClick={ onClickAll }
           type="button"

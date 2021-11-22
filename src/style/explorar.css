@@ -4,97 +4,113 @@
 }
 
 .container-explorar > button {
-  display: flex;
-  justify-content: center;
   align-items: center;
   border: none;
   border-radius: 10px;
+  box-shadow: 3px 3px 5px black;
+  color: white;
   cursor: pointer;
+  display: flex;
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  height: 107px;
+  justify-content: center;
   outline: inherit;
   padding: 0;
   width: 40%;
-  height: 107px;
-  color: white;
-  font-size: 16px;
-  font-family: sans-serif;
-  font-weight: bold;
-  box-shadow: 3px 3px 5px rgb(0, 0, 0);
-}
-
-.container-explorar > button:nth-child(1) {
-  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2)), url(../images/explorar-comida.jpg);
-  background-size: 145px;
-}
-
-.container-explorar > button:nth-child(2) {
-  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2)), url(../images/explorar-bebidas.jpg);
-  background-size: 145px;
-}
-
-.container-btn-comidas-bebidas {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  height: 320px;
 }
 
 .container-btn-comidas-bebidas > button {
   background-color: transparent;
   border: none;
   border-radius: 10px;
+  box-shadow: 3px 3px 5px black;
+  color: white;
   cursor: pointer;
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  height: 120px;
   outline: inherit;
   padding: 0;
   width: 50%;
-  height: 120px;
-  color: white;
-  font-size: 16px;
-  font-family: sans-serif;
-  font-weight: bold;
-  box-shadow: 3px 3px 5px rgb(0, 0, 0);
 }
 
-#btn-ingredientes {
-  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2)), url(../images/explorar-ingredient.jpg);
+.container-btn-random > button {
+  align-items: center;
+  background-color: #3da35d;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  font-size: 22px;
+  height: 75px;
+  justify-content: space-evenly;
+  outline: inherit;
+  padding: 0;
+  width: 280px;
+}
+
+.container-btn-ingredient > button {
+  background-color: transparent;
+  border: none;
+  display: flex;
+  height: 133.5px;
+  outline: none;
+  position: absolute;
+  width: 123px;
+}
+
+.container-explorar > button:nth-child( 1 ) {
+  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2)) , url('../images/explorar-comida.jpg');
+  background-size: 145px;
+}
+
+.container-explorar > button:nth-child( 2 ) {
+  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2)) , url('../images/explorar-bebidas.jpg');
+  background-size: 145px;
+}
+
+.container-btn-comidas-bebidas {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 320px;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.btn-ingredientes {
+  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2)) , url('../images/explorar-ingredient.jpg');
   background-size: 181px;
 }
 
-#btn-local {
-  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2)), url(../images/explorar-area.png);
+.btn-local {
+  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2)) , url('../images/explorar-area.png');
   background-size: 181px;
 }
 
 .container-btn-random {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   height: 208px;
-}
-
-.container-btn-random > button {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-  background-color: #3da35d;
-  width: 280px;
-  height: 75px;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  outline: inherit;
-  color: white;
-  font-size: 22px;
-  padding: 0;
+  justify-content: center;
 }
 
 .container-btn-random > button:hover {
-  transition: 250ms;
   background-color: rgb(205, 50, 63);
-  box-shadow: 3px 3px 5px rgb(0, 0, 0);
+  box-shadow: 3px 3px 5px black;
+  transition: 250ms;
+}
+
+.btn-floating > img {
+  object-fit: cover;
+  object-position: 0 22px;
+  width: 120px;
 }
 
 .container-btn-random > button > img {
@@ -104,55 +120,40 @@
 .container-ingredients {
   display: flex;
   flex-flow: row wrap;
+  height: 730px;
   justify-content: space-evenly;
   padding-bottom: 34px;
-  height: 730px;
 }
 
 .container-btn-ingredient {
+  background-color: transparent;
   display: flex;
   flex-direction: column;
-  background-color: transparent;
-  justify-content: flex-end;
   height: 110px;
-  width: 130px;
+  justify-content: flex-end;
   margin-top: 10;
+  width: 130px;
 }
 
 .container-cardname {
+  align-items: flex-end;
   background-color: #3da35d;
-  width: 100%;
-  height: 60px;
   border-radius: 17px;
   display: flex;
+  height: 60px;
   justify-content: center;
-  align-items: flex-end;
+  width: 100%;
 }
 
 .container-ingredients h4 {
-  text-align: center;
   color: aliceblue;
   font-size: 18px;
-  margin: 0
+  margin: 0;
+  text-align: center;
 }
 
-.container-btn-ingredient > button {
-  border: none;
-  outline: none;
-  background-color: transparent;
-  width: 123px;
-  height: 133.5px;
-  position: absolute;
-  display: flex;
-}
 
 .btn-floating:hover + .container-cardname {
   background-color: #ef3e36;
   transition: 250ms;
-}
-
-.btn-floating > img {
-  object-fit: cover;
-  object-position: 0 22px;
-  width: 120px;
 }

@@ -29,7 +29,7 @@ function ExplorarComidasOuBedidas() {
       <main>
         <div className="container-btn-comidas-bebidas">
           <button
-            id="btn-ingredientes"
+            className="btn-ingredientes"
             type="button"
             data-testid="explore-by-ingredient"
             onClick={ () => (history.push(
@@ -41,7 +41,7 @@ function ExplorarComidasOuBedidas() {
           { type === 'Comidas'
            && (
              <button
-               id="btn-local"
+               className="btn-local"
                type="button"
                data-testid="explore-by-area"
                onClick={ () => history.push('/explorar/comidas/area') }

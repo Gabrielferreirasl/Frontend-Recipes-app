@@ -6,38 +6,37 @@ body {
   align-items: center;
   display: flex;
   height: 80px;
-  width: 340px;
   overflow-x: auto;
-  scroll-behavior: smooth;
+  width: 340px;
 }
 
 .overlay-scroll {
-  position: absolute;
   align-content: flex-end;
   background: linear-gradient(269deg, #303030 11.28%, rgba(0, 0, 0, 0) 100%);
-  min-width: 30px;
   height: 35px;
   left: 310px;
+  min-width: 30px;
+  position: absolute;
 }
 
 .container-buttons > button {
+  align-items: center;
   background-color: #373737;
   border: 1px solid #ffffff1a;
   border-radius: 15px;
-  cursor: pointer;  
-  outline: inherit;
   color: white;
+  cursor: pointer;
+  display: flex;
+  font-size: 16px;
+  height: 35px;
   justify-content: center;
-  align-items: center;
+  margin: 0 10px;
+  outline: inherit;
   padding: 0 12px;
   white-space: nowrap;
-  height: 35px;
-  font-size: 16px;
-  display: flex;
-  margin: 0 10px;
 }
 
-#btn-all {
+.btn-all {
   min-width: 80px;
 }
 
@@ -58,8 +57,8 @@ body {
 
 .card-recipe-principal {
   background-color: black;
+  margin-bottom: 12px;
   width: 150px;
-  margin-bottom: 12px
 }
 
 .card-recipe-principal > img {
@@ -76,12 +75,12 @@ body {
   color: white;
   display: flex;
   font-size: 14px;
-  font-weight: bold;
+  font-weight: 700;
   height: 130px;
   justify-content: center;
+  padding: 5px;
   position: absolute;
   width: 150px;
-  padding: 5px;
 }
 
 .skeleton-category {
@@ -90,19 +89,22 @@ body {
 
 .card-recipe-skeleton {
   animation: skeleton-loading 1.5s linear infinite alternate;
-  width: 150px;
-  height: 130px;
   background-color: #373737;
-  margin: 10px 0;
   border-radius: 10px;
+  height: 130px;
+  margin: 10px 0;
+  width: 150px;
 }
 
 @keyframes skeleton-loading {
-  from {background-color: #373737;}
-  to {background-color: #868383;}
+
+  from { background-color: #373737;}
+
+  to { background-color: #868383;}
 }
 
-@media (min-width: 370px) {
+@media ( min-width : 370px ) {
+
   .container-buttons::-webkit-scrollbar {
     display: none;
   }
