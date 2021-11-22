@@ -14,6 +14,7 @@ const renderPath = (path) => {
         <App />
       </Router>
     </RecipesProvider>,
+
   );
   return { ...resources, history };
 };

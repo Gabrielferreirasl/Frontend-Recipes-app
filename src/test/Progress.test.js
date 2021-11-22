@@ -2,7 +2,7 @@ import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import recipeByIdComida from '../mocks/recipeByIdComida';
 import * as APIfuncs from '../services/recipesAPI';
-import renderPath from '../helpers/RenderPath';
+import renderPath from '../helpers/renderPath';
 
 const getRecipeByIdMock = jest.spyOn(APIfuncs, 'getRecipeById')
   .mockImplementation(() => Promise.resolve(recipeByIdComida));
@@ -25,7 +25,8 @@ describe('Verifica a tela de "Progresso"', () => {
         .toBeInTheDocument();
       const checkbox = await screen.getByRole('checkbox',
         { name:
-            `${recipeByIdComida[ing]} ${recipeByIdComida[`strMeasure${indice + 1}`]}` });
+            `${
+              recipeByIdComida[ing]} - ${recipeByIdComida[`strMeasure${indice + 1}`]}` });
       expect(checkbox.checked).toBeFalsy();
     });
 
@@ -42,7 +43,7 @@ describe('Verifica a tela de "Progresso"', () => {
         .toBeInTheDocument();
       const checkbox = await screen.getByRole('checkbox',
         { name:
-           `${recipeByIdComida[ing]} ${recipeByIdComida[`strMeasure${indice + 1}`]}` });
+           `${recipeByIdComida[ing]} - ${recipeByIdComida[`strMeasure${indice + 1}`]}` });
       expect(checkbox.checked).toBeFalsy();
       userEvent.click(checkbox);
       expect(checkbox.checked).toBeTruthy();

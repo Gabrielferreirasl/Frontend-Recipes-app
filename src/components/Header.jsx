@@ -13,7 +13,11 @@ function Header({ type }) {
         <img data-testid="profile-top-btn" src={ profileIcon } alt="profileIcon" />
       </Link>
       <h2 data-testid="page-title">{type}</h2>
-      <button type="button" onClick={ () => setSearchBar(!searchBar) }>
+      <button
+        data-testid="search-button"
+        type="button"
+        onClick={ () => setSearchBar(!searchBar) }
+      >
         <img data-testid="search-top-btn" src={ searchIcon } alt="searchIcon" />
       </button>
       {searchBar && <SearchBar />}

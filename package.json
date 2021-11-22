@@ -47,6 +47,7 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/dom": "^8.11.1",
     "@testing-library/jest-dom": "^4.2.4",
     "clipboardy": "^2.1.0",
     "cypress": "^3.7.0",
@@ -59,6 +60,7 @@
     "mochawesome": "^6.1.1",
     "mochawesome-merge": "^4.1.0",
     "mochawesome-report-generator": "^5.1.0",
+    "mutationobserver-shim": "^0.3.7",
     "stylelint": "^13.8.0",
     "stylelint-order": "^4.1.0"
   },

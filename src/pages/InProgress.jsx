@@ -51,7 +51,7 @@ function InProgress() {
                 <label
                   htmlFor={ key }
                 >
-                  { `${recipe[key]} ${recipe[`strMeasure${indice + 1}`]}`}
+                  { `${recipe[key]} - ${recipe[`strMeasure${indice + 1}`]}`}
 
                 </label>
                 <input
