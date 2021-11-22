@@ -31,7 +31,7 @@ function Login({ history }) {
   };
 
   return (
-    <main className="text-center login-group">
+    <main className="container-login text-center login-group">
       <h1 className="title-login mb-2 text-white">Login</h1>
       <section className="text-center">
         <div className="input-group mb-3">

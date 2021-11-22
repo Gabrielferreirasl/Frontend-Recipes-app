@@ -8,7 +8,7 @@ import SearchBar from './SearchBar';
 function Header({ type }) {
   const [searchBar, setSearchBar] = useState(false);
   return (
-    <header>
+    <header className="container-header-search">
       <Link to="/perfil">
         <img data-testid="profile-top-btn" src={ profileIcon } alt="profileIcon" />
       </Link>

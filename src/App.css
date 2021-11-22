@@ -1,3 +1,41 @@
+.container-header-search {
+  background-color: #ef3e36;
+  display: flex;
+  height: 50px;
+  justify-content: space-evenly;
+  margin: 0;
+  padding: 10px;
+  width: 100%;
+}
+
+.container-header-search > button {
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  width: 50px;
+}
+
+header {
+  background-color: #ef3e36;
+  display: flex !important;
+  height: 50px;
+  justify-content: space-evenly;
+  margin: 0;
+  padding: 10px;
+  width: 100%;
+}
+
+header h2 {
+  font-size: 1.6em;
+}
+
+header img {
+  width: 1.7em;
+}
+
 .meals {
   align-items: center;
   background: #0fa36b;

@@ -1,5 +1,5 @@
 .login-group {
-  margin-top: 45%;
+  padding-top: 15%;
 }
 
 .btn-entrar {
@@ -29,9 +29,10 @@
   margin-top: 25%;
 }
 
-body {
+.container-login {
   background: url('../images/flat-lay-brazilian-food-with-copy-space.jpg') fixed no-repeat;
   background-size: 100% 100%;
+  height: 640px;
 }
 
 input {
