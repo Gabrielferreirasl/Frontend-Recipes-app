@@ -50,6 +50,11 @@ function InProgress() {
             <h3>Ingredients</h3>
             {Object.keys(recipeSteps).map((key, indice) => (
               <div key={ indice } data-testid={ `${indice}-ingredient-step` }>
+                <label
+                  htmlFor={ key }
+                >
+                  { `${recipe[key]} - ${recipe[`strMeasure${indice + 1}`]}`}
+                </label>
                 <input
                   className="checkbox form-check-input"
                   onChange={ (ev) => updateStepsState(ev) }

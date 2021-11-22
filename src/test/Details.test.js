@@ -44,7 +44,7 @@ describe('Testes do componente "Details"', () => {
       expect(await screen.findByRole(`${indice}-ingredient-name-and-measure`))
         .toBeInTheDocument();
     });
-    userEvent.click(await screen.getByTestId('favorite-btn'));
+    userEvent.click(screen.getByTestId('favorite-btn'));
     expect(await screen.getByAltText('fav').src).toBe('http://localhost/comidas/blackHeartIcon.svg');
     expect(JSON.parse(localStorage.getItem('favoriteRecipes'))[0].id).toBe('52772');
 
