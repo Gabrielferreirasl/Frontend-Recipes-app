@@ -18,6 +18,10 @@
   width: 50px;
 }
 
+header h2 {
+  font-size: 1.6em;
+}
+
 .container-nosearch {
   background-color: #ef3e36;
   display: flex;
@@ -33,10 +37,6 @@
   align-self: center;
   margin-bottom: 0;
   margin-right: 82px;
-}
-
-header h2 {
-  font-size: 1.6em;
 }
 
 header img {
