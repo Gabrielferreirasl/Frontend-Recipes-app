@@ -1,6 +1,7 @@
 .container-explorar {
   display: flex;
   justify-content: space-around;
+  margin-top: 10px;
 }
 
 .container-explorar > button {
@@ -12,7 +13,7 @@
   cursor: pointer;
   display: flex;
   font-family: sans-serif;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 700;
   height: 107px;
   justify-content: center;
