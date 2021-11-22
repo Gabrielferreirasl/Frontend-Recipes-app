@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { recipesApiList } from '../services/recipesAPI';
 import CardsRecipes from './CardsRecipes';
 import RecipesContext from '../context/RecipesContext';
+import CardsRecipesSkeleton from './screenSkeleton/CardsRecipesSkeleton';
 
 function RenderRecipes({ items }) {
   const history = useHistory();
@@ -32,7 +33,8 @@ function RenderRecipes({ items }) {
     <div>
       <main>
         {
-          items.length !== 0 && <CardsRecipes maxItems={ 12 } items={ items } />
+          items.length > 0 ? <CardsRecipes maxItems={ 12 } items={ items } />
+            : <CardsRecipesSkeleton numberCards={ 12 } />
         }
       </main>
     </div>
