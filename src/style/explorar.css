@@ -157,3 +157,21 @@
   background-color: #ef3e36;
   transition: 250ms;
 }
+
+.container-select {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.dropdown-areas {
+  background-color: #373737;
+  border: 1px solid #ffffff1a;
+  border-radius: 15px;
+  color: white;
+  font-weight: 600;
+  height: 40px;
+  margin: 12px 0;
+  text-align: center;
+  width: 120px;
+}

@@ -37,22 +37,25 @@ function ExplorarPorArea() {
   return (
     <main>
       <Header type="Explorar Origem" />
-      <select
-        data-testid="explore-by-area-dropdown"
-        name="area"
-        onChange={ onChange }
-      >
-        <option data-testid="All-option" value="all">All</option>
-        {areas && areas.map(({ strArea }) => (
-          <option
-            data-testid={ `${strArea}-option` }
-            key={ strArea }
-            value={ strArea }
-          >
-            {strArea}
-          </option>
-        ))}
-      </select>
+      <div className="container-select">
+        <select
+          className="dropdown-areas"
+          data-testid="explore-by-area-dropdown"
+          name="area"
+          onChange={ onChange }
+        >
+          <option data-testid="All-option" value="all">All</option>
+          {areas && areas.map(({ strArea }) => (
+            <option
+              data-testid={ `${strArea}-option` }
+              key={ strArea }
+              value={ strArea }
+            >
+              {strArea}
+            </option>
+          ))}
+        </select>
+      </div>
       <RenderRecipes items={ meals } />
       <Footer />
     </main>
