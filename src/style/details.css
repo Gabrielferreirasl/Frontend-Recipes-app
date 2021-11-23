@@ -150,3 +150,59 @@ p {
 .iframe iframe {
   top: 0;
 }
+
+.div-recomendations {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+
+.carrousel {
+  display: flex;
+  flex-direction: row;
+  padding: 0 4px;
+  scroll-behavior: smooth;
+  width: 190px;
+}
+
+.container-carrousel {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.btn-carrousel {
+  background-color: #373737;
+  border: none;
+  border-radius: 50%;
+  color: gray;
+  outline: inherit;
+}
+
+.btn-carrousel img {
+  height: 20px;
+  width: 22px;
+}
+
+.setaNext {
+  transform: rotate(180deg);
+}
+
+.item-carrousel {
+  background-color: #373737;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  height: 250px;
+  justify-content: space-evenly;
+  margin-right: 15px;
+}
+
+.last-item { /* acessa ultimo item do carrousel  */
+  margin-right: 0;
+}
+
+.item-carrousel p {
+  font-size: 14px;
+}
