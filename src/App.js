@@ -17,7 +17,7 @@ import ExplorarIngredientes from './pages/ExplorarIngredientes';
 import ExplorarPorArea from './pages/ExplorarPorArea';
 import NotFound from './components/NotFound';
 
-function App() {
+function App() { // app
   return (
     <RecipesProvider>
       <Switch>
