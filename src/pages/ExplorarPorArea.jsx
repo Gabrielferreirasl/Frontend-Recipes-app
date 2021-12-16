@@ -16,9 +16,10 @@ function ExplorarPorArea() {
   }, []);
 
   const filterByArea = async ({ target: { value } }) => {
+    console.log(value);
     const recipesByArea = value === 'all' ? await recipesApiList('comidas')
       : await getRecipesByArea(value);
-    setArrayRecipes((prev) => ({ ...prev, meals: recipesByArea.meals }));
+    await setArrayRecipes((prev) => ({ ...prev, meals: recipesByArea.meals }));
   };
 
   const onChange = (ev) => {

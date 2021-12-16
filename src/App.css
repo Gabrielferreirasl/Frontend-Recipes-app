@@ -1,3 +1,7 @@
+* {
+  max-width: 375px !important;
+}
+
 .container-header-search {
   background-color: #ef3e36;
   display: flex;

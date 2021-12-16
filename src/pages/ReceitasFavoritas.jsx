@@ -28,7 +28,7 @@ function ReceitasFavoritas() {
           <img data-testid="profile-top-btn" src={ profileIcon } alt="profileIcon" />
         </Link>
         <div className="container-title-header">
-          <h2 data-testid="page-title">Receitas Feitas</h2>
+          <h2 data-testid="page-title">Receitas Favoritas</h2>
         </div>
       </header>
       <nav>

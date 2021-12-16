@@ -7,21 +7,21 @@
   border-radius: 7px;
   color: white;
   margin-top: 20%;
-  max-width: 75%;
+  max-width: 75%  !important;
   opacity: 1;
 }
 
 .pass {
   background: #303030;
   margin: 10px;
-  max-width: 80%;
+  max-width: 80%  !important;
   padding: 20px;
 }
 
 .email {
   background: #303030;
   margin: 10px;
-  max-width: 80%;
+  max-width: 80% !important;
   padding: 20px;
 }
 
