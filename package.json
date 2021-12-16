@@ -2,7 +2,7 @@
   "name": "recipes-app-test",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://gabrielferreirasl.github.io/app-recipes",
+  "homepage": "https:\/\/Gabriel.github.io/app-recipes",
   "dependencies": {
     "@sheerun/mutationobserver-shim": "^0.3.3",
     "@testing-library/jest-dom": "^4.2.4",
