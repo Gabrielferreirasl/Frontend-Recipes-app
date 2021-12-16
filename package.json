@@ -1,8 +1,8 @@
 {
+  "homepage": "https:\/\/Gabrielferreirasl.github.io/app-recipes",
   "name": "recipes-app-test",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https:\/\/Gabriel.github.io/app-recipes",
   "dependencies": {
     "@sheerun/mutationobserver-shim": "^0.3.3",
     "@testing-library/jest-dom": "^4.2.4",
@@ -25,6 +25,8 @@
     "websocket-extensions": ">=0.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "cy": "cypress run",
     "cy:open": "cypress open",
     "start": "react-scripts start",
@@ -33,9 +35,7 @@
     "test-coverage": "react-scripts test --coverage --watchAll=false",
     "eject": "react-scripts eject",
     "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json . --ext .js,.jsx",
-    "lint:styles": "npx stylelint '**/*.css'",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "lint:styles": "npx stylelint '**/*.css'"
   },
   "eslintConfig": {
     "extends": "react-app"
