@@ -1,6 +1,6 @@
 ## Description
 
-Project done in group. It was developed a recipe app, using Hooks and Context API,
+Project made in group. It was developed a recipe app, using Hooks and Context API,
 you can see, search, filter, favorite and follow the process of preparing recipes and drinks!
 It was used 2 distinct APIs, one for food and another for drinks,
 the layout is focused on mobile devices, and tests were also developed.
