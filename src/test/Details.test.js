@@ -27,8 +27,11 @@ global.navigator.clipboard = mockClipboard;
 describe('Testes do componente "Details"', () => {
   test('verifica se as informações estão na tela', async () => {
     renderPath('/comidas/52772');
-    expect(getRecipeByIdMock).toBeCalled();
-    expect(getRecomendationsMock).toBeCalled();
+    waitFor(() => {
+      expect(getRecipeByIdMock).toBeCalled();
+      expect(getRecomendationsMock).toBeCalled();
+    });
+
     expect(await screen.findByTestId('0-ingredient-name-and-measure'))
       .toBeInTheDocument();
     expect(await screen.findByTestId('video')).toBeInTheDocument();
@@ -71,8 +74,11 @@ describe('Verifica os as opções de iniciar e continuar receita', () => {
   test('opção de iniciar receita', async () => {
     localStorage.setItem('inProgressRecipes', JSON.stringify({ meals: {} }));
     const { history } = renderPath('/comidas/52771');
-    expect(await screen.getByText('Iniciar Receita')).toBeInTheDocument();
-    userEvent.click(await screen.getByText('Iniciar Receita'));
+
+    const iniciateRecipeBtn = await screen.findByText('Iniciar Receita');
+
+    expect(iniciateRecipeBtn).toBeInTheDocument();
+    userEvent.click(iniciateRecipeBtn);
     expect(history.location.pathname).toBe('/comidas/52771/in-progress');
   });
   test('opção de iniciar receita', async () => {
@@ -80,8 +86,10 @@ describe('Verifica os as opções de iniciar e continuar receita', () => {
       meals: { 52771: ['strIngredient3'] } }));
     const { history } = renderPath('/comidas/52771');
 
-    expect(await screen.getByText('Continuar Receita')).toBeInTheDocument();
-    userEvent.click(await screen.getByText('Continuar Receita'));
+    const ContinueRecipeBtn = await screen.findByText('Continuar Receita');
+
+    expect(ContinueRecipeBtn).toBeInTheDocument();
+    userEvent.click(ContinueRecipeBtn);
     expect(history.location.pathname).toBe('/comidas/52771/in-progress');
   });
 });
