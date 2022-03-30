@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import '../style/explorar.css';
 import Footer from '../components/Footer';
-import profileIcon from '../images/profileIcon.svg';
+import profileIcon from '../images/profileIcon.png';
 
 function Explorar() {
   const history = useHistory();

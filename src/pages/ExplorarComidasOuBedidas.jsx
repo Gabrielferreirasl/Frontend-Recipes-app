@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import Footer from '../components/Footer';
 import '../style/explorar.css';
 import iconRandom from '../images/icon-rando.png';
-import profileIcon from '../images/profileIcon.svg';
+import profileIcon from '../images/profileIcon.png';
 import { getRandomRecipe } from '../services/recipesAPI';
 
 function ExplorarComidasOuBedidas() {

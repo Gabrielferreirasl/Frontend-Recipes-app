@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import CardToFavoriteOrDone from '../components/CardToFavoriteOrDone';
 import FiltersByType from '../components/FiltersByType';
 import { updateRecipes } from '../helpers';
-import profileIcon from '../images/profileIcon.svg';
+import profileIcon from '../images/profileIcon.png';
 import '../style/doneAndFavorite.css';
 
 function ReceitasFeitas() {

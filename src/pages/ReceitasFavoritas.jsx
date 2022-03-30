@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { favoriteOrDisfavorite, getLocalStorage, updateRecipes } from '../helpers';
 import FiltersByType from '../components/FiltersByType';
 import CardToFavoriteOrDone from '../components/CardToFavoriteOrDone';
-import profileIcon from '../images/profileIcon.svg';
+import profileIcon from '../images/profileIcon.png';
 import '../style/doneAndFavorite.css';
 
 function ReceitasFavoritas() {

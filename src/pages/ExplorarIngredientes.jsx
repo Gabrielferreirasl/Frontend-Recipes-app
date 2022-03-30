@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import RecipesContext from '../context/RecipesContext';
 import { getIngredients, getRecipesByIngredient } from '../services/recipesAPI';
-import profileIcon from '../images/profileIcon.svg';
+import profileIcon from '../images/profileIcon.png';
 import Footer from '../components/Footer';
 
 function ExplorarIngredientes() {

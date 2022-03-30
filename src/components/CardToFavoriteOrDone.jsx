@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import shareIcon from '../images/shareIcon.svg';
-import blackHeartIcon from '../images/blackHeartIcon.svg';
+import shareIcon from '../images/shareIcon.png';
+import blackHeartIcon from '../images/blackHeartIcon.png';
 
 function CardToFavoriteOrDone({ item, index, favoriteOrMade, removeFavorite }) {
   const itemIsFavorite = favoriteOrMade === 'favorite';

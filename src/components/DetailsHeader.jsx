@@ -2,9 +2,9 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { useLocation } from 'react-router';
 import { checkIsFavorite, saveFavorite } from '../helpers';
-import shareIcon from '../images/shareIcon.svg';
-import blackHeartIcon from '../images/blackHeartIcon.svg';
-import whiteHeartIcon from '../images/whiteHeartIcon.svg';
+import shareIcon from '../images/shareIcon.png';
+import blackHeartIcon from '../images/blackHeartIcon.png';
+import whiteHeartIcon from '../images/whiteHeartIcon.png';
 import '../style/details.css';
 
 function DetailsHeader({ recipe }) {
