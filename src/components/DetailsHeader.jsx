@@ -32,6 +32,7 @@ function DetailsHeader({ recipe }) {
     <>
       <img
         data-testid="recipe-photo"
+        className="recipe-photo"
         src={ recipe[`str${infoRecipe.keyType}Thumb`] }
         alt="recipe"
       />
