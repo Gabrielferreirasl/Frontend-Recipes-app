@@ -72,7 +72,7 @@ describe('testa funcionamento da pagina "explorar/comidas/ingredientes"', () => 
   it('verifica se renderiza os ingredientes', async () => {
     renderPath('/explorar/comidas/ingredientes');
     expect(await screen.findByText(/chicken/i)).toBeInTheDocument();
-    expect(await screen.findByText(/baby plum tomatoes/i)).toBeInTheDocument();
+    expect(await screen.findByText(/Baby Plum/i)).toBeInTheDocument();
   });
   it('verifica se ao clicar em algum ingrediente redireciona para tela'
     + ' principal com as receitas filtradas pelo ingrediente clicado', async () => {
@@ -80,7 +80,7 @@ describe('testa funcionamento da pagina "explorar/comidas/ingredientes"', () => 
     const chickenBtn = await screen.findByText(/chicken/i);
     userEvent.click(chickenBtn);
 
-    await waitFor(async () => {
+    waitFor(async () => {
       expect(history.location.pathname).toBe('/comidas');
       expect(await screen.findByText('Brown Stew Chicken')).toBeInTheDocument();
     });
