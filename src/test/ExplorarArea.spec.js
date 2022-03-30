@@ -1,4 +1,5 @@
 import { screen, fireEvent } from '@testing-library/react';
+import { waitFor } from '@testing-library/dom';
 import * as ApiFuncs from '../services/recipesAPI';
 import renderPath from '../helpers/renderPath';
 
