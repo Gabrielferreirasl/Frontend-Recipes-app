@@ -43,12 +43,15 @@ const addOrRemoveProgress = (inProgressRecipes, stepName, keyObj, id) => {
     if (inProgressRecipes[keyObj][id].some((step) => step === stepName)) {
       inProgressRecipes[keyObj][id] = inProgressRecipes[keyObj][id]
         .filter((p) => p !== stepName);
+
       return localStorage.setItem('inProgressRecipes',
         JSON.stringify(inProgressRecipes));
     }
+
     inProgressRecipes[keyObj][id] = [...inProgressRecipes[keyObj][id], stepName];
     return localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
   }
+
   inProgressRecipes[keyObj][id] = [stepName];
   return localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
 };
@@ -57,6 +60,7 @@ export const checkProgress = (stepName, keyObj, id) => {
   const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
   const obj = { cocktails: {}, meals: {} };
   obj[keyObj] = { [id]: [stepName] };
+
   return inProgressRecipes ? addOrRemoveProgress(inProgressRecipes, stepName, keyObj, id)
     : localStorage.setItem('inProgressRecipes', JSON.stringify(obj));
 };
@@ -66,6 +70,7 @@ export const finishRecipe = (keyType, history, id, recipe) => {
   const date = `${dataAtual.getDate()}/${(dataAtual.getMonth()
      + 1)}/${dataAtual.getFullYear()}`;
   const key = keyType === 'cocktails' ? 'Drink' : 'Meal';
+
   const obj = {
     id,
     type: key === 'Drink' ? 'bebida' : 'comida',
@@ -77,11 +82,13 @@ export const finishRecipe = (keyType, history, id, recipe) => {
     image: recipe[`str${key}Thumb`],
     doneDate: date,
   };
+
   const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
   if (doneRecipes) {
     localStorage.setItem('doneRecipes', JSON.stringify([...doneRecipes, obj]));
     return history.push('/receitas-feitas');
   }
+
   localStorage.setItem('doneRecipes', JSON.stringify([obj]));
   return history.push('/receitas-feitas');
 };
@@ -89,11 +96,14 @@ export const finishRecipe = (keyType, history, id, recipe) => {
 export const updateRecipes = (keyLocalStorage, typeToFilter, setState) => {
   if (getLocalStorage(keyLocalStorage)) {
     const listFavoriteRecipes = getLocalStorage(keyLocalStorage);
+
     if (typeToFilter !== 'all') {
       const recipesFiltred = listFavoriteRecipes
         .filter((recipe) => recipe.type === typeToFilter);
+
       return setState(recipesFiltred);
     }
+
     setState(listFavoriteRecipes);
   }
 };

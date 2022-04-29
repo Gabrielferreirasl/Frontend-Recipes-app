@@ -6,7 +6,7 @@ import { recipesApiMock as dataMock,
   searchIngredientIce, searchNomeVodka, searchFirstLetter } from './mocks';
 import * as ApiFuncs from '../services/recipesAPI';
 import renderWithRouter from '../helpers/renderWithRouter';
-import Bebidas from '../pages/Bebidas';
+import Drinks from '../pages/Drinks';
 import RenderRecipes from '../components/RenderRecipes';
 import renderPath from '../helpers/renderPath';
 
@@ -54,7 +54,7 @@ describe('Testa funcionamento da pagina de bebidas/comidas', () => {
   afterEach(cleanup);
 
   it('verifica se o header esta sendo renderizado', () => {
-    renderWithRouter(<Bebidas />);
+    renderWithRouter(<Drinks />);
     const titleHeader = screen.getByText(/bebidas/i);
     expect(titleHeader).toBeInTheDocument();
   });

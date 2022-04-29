@@ -24,8 +24,6 @@ function Login({ history }) {
   };
 
   const handleClickLogin = () => {
-    setLocalStorage('mealsToken', 1);
-    setLocalStorage('cocktailsToken', 1);
     setLocalStorage('user', { email: emailAndPassword.email });
     history.push('/comidas');
   };

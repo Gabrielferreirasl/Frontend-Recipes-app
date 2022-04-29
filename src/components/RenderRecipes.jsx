@@ -31,12 +31,12 @@ function RenderRecipes({ items }) {
 
   return (
     <div>
-      <main>
+      <div>
         {
           items.length > 0 ? <CardsRecipes maxItems={ 12 } items={ items } />
             : <CardsRecipesSkeleton numberCards={ 12 } />
         }
-      </main>
+      </div>
     </div>
   );
 }

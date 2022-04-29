@@ -48,7 +48,7 @@ describe('Testes do componente "Details"', () => {
         .toBeInTheDocument();
     });
     userEvent.click(screen.getByTestId('favorite-btn'));
-    expect(await screen.getByAltText('fav').src).toBe('http://localhost/comidas/blackHeartIcon.svg');
+    expect(await screen.getByAltText('fav').src).toBe('http://localhost/comidas/blackHeartIcon.png');
     expect(JSON.parse(localStorage.getItem('favoriteRecipes'))[0].id).toBe('52772');
 
     userEvent.click(await screen.findByAltText('shareIcon'));

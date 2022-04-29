@@ -2,7 +2,7 @@ import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 import renderWithRouter from '../helpers/renderWithRouter';
-import ReceitasFavoritas from '../pages/ReceitasFavoritas';
+import FavoriteRecipes from '../pages/FavoriteRecipes';
 
 const FAVORITE_RECIPES = [
   {
@@ -43,7 +43,7 @@ afterEach(() => {
 
 describe('Testa a página de receitas favoritas', () => {
   it('Testa se a página contém um heading h2 com o texto "Receitas Favoritas"', () => {
-    renderWithRouter(<ReceitasFavoritas />);
+    renderWithRouter(<FavoriteRecipes />);
     const favoriteRecipesTitle = screen.getByRole('heading', {
       level: 2,
       name: /receitas favoritas/i,
@@ -52,7 +52,7 @@ describe('Testa a página de receitas favoritas', () => {
   });
 
   it('Testa se botões estão sendo renderizados', () => {
-    renderWithRouter(<ReceitasFavoritas />);
+    renderWithRouter(<FavoriteRecipes />);
     const renderAllBtn = screen.getByRole('button', {
       name: /all/i,
     });
@@ -71,7 +71,7 @@ describe('Testa a página de receitas favoritas', () => {
 
   it('Testa se os cards de comida e bebida são renderizados corretamente', () => {
     localStorage.setItem('favoriteRecipes', JSON.stringify(FAVORITE_RECIPES));
-    renderWithRouter(<ReceitasFavoritas />);
+    renderWithRouter(<FavoriteRecipes />);
 
     const renderImg = screen.getByTestId('0-horizontal-image');
     expect(renderImg).toBeInTheDocument();

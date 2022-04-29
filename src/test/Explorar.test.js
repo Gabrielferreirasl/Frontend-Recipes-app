@@ -2,13 +2,13 @@ import React from 'react';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import renderWithRouter from '../helpers/renderWithRouter';
-import Explorar from '../pages/Explorar';
+import Explore from '../pages/Explore';
 
-import profileIcon from '../images/profileIcon.svg';
+import profileIcon from '../images/profileIcon.png';
 
 describe('testa funcionalidade da página de explorar', () => {
   it('Testa se a a imagem com o ícone de perfil e header aparecem na tela', () => {
-    renderWithRouter(<Explorar />);
+    renderWithRouter(<Explore />);
     const header = screen.getByTestId('page-title');
     const imgProfile = screen.getByTestId('profile-top-btn');
 
@@ -18,7 +18,7 @@ describe('testa funcionalidade da página de explorar', () => {
   });
 
   it('Testa o botão de explorar Comidas', async () => {
-    const { history } = renderWithRouter(<Explorar />);
+    const { history } = renderWithRouter(<Explore />);
     const mealBtn = screen.getByTestId('explore-food');
     expect(mealBtn).toBeInTheDocument();
 
@@ -29,7 +29,7 @@ describe('testa funcionalidade da página de explorar', () => {
   });
 
   it('Testa o botão de explorar Bebidas', () => {
-    const { history } = renderWithRouter(<Explorar />);
+    const { history } = renderWithRouter(<Explore />);
     const drinkBtn = screen.getByTestId('explore-drinks');
     expect(drinkBtn).toBeInTheDocument();
 

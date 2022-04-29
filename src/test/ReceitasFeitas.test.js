@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import 'mutationobserver-shim';
 import React from 'react';
 import renderWithRouter from '../helpers/renderWithRouter';
-import ReceitasFeitas from '../pages/ReceitasFeitas';
+import DoneRecipes from '../pages/DoneRecipes';
 
 const DONE_RECIPE = [
   {
@@ -48,7 +48,7 @@ afterEach(() => {
 
 describe('Testa a página de receitas feitas', () => {
   it('Testa se a página contém um heading h2 com o texto "Receitas Feitas"', () => {
-    renderWithRouter(<ReceitasFeitas />);
+    renderWithRouter(<DoneRecipes />);
     const doneRecipesTitle = screen.getByRole('heading', {
       level: 2,
       name: /receitas feitas/i,
@@ -58,7 +58,7 @@ describe('Testa a página de receitas feitas', () => {
 
   it('Testa se botões estão sendo renderizados', async () => {
     localStorage.setItem('doneRecipes', JSON.stringify(DONE_RECIPE));
-    renderWithRouter(<ReceitasFeitas />);
+    renderWithRouter(<DoneRecipes />);
     const renderAllBtn = screen.getByRole('button', {
       name: /all/i,
     });
@@ -91,7 +91,7 @@ describe('Testa a página de receitas feitas', () => {
 
   it('Testa se os cards de comida e bebida são renderizados corretamente', () => {
     localStorage.setItem('doneRecipes', JSON.stringify(DONE_RECIPE));
-    renderWithRouter(<ReceitasFeitas />);
+    renderWithRouter(<DoneRecipes />);
 
     const renderImg = screen.getByTestId('0-horizontal-image');
     expect(renderImg).toBeInTheDocument();

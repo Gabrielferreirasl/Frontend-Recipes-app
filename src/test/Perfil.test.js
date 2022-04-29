@@ -3,13 +3,13 @@ import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import renderWithRouter from '../helpers/renderWithRouter';
 import renderPath from '../helpers/renderPath';
-import Perfil from '../pages/Perfil';
+import Profile from '../pages/Profile';
 
 describe('1- Verifica se o email correto aparece na tela', () => {
   test('1.2- testa se o email correto é exibido', () => {
     localStorage.setItem('user', JSON.stringify({ email: 'email@email.com' }));
     // Storage.prototype.getItem = jest.fn(() => ({ email: 'email@email' }));
-    renderWithRouter(<Perfil />);
+    renderWithRouter(<Profile />);
     const profileMail = screen.getByText('email@email.com');
     expect(profileMail).toBeInTheDocument();
   });
